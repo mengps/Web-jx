@@ -1,0 +1,327 @@
+@charset "UTF-8";
+/**
+ * css 初始化 
+ */
+
+.shortcut {
+    height: 30px;
+    line-height: 28px;
+    background-color: rgb(240, 241, 242);
+}
+
+.shortcut li {
+    float: left;
+}
+
+li.dt {
+    padding: 0px 7px;
+}
+
+li.seperator {
+    overflow: hidden;
+    width: 1px;
+    height: 10px;
+    margin: 10px 7px;
+    background-color: gray;
+}
+
+/**
+ * 版心（可视区）。需要专门提取出来
+ */
+.w {
+    width: 1320px;
+    margin: auto;
+}
+
+.dropDownButton {
+    border: 1px solid transparent;
+    padding: 0px 7px;
+    -webkit-user-select: none;
+}
+
+.dropDownButton:hover {
+    border: 1px solid rgb(192, 192, 192);
+    border-bottom: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.dropDownContent {
+    z-index: 10;
+    display: none;
+    position: absolute;
+    margin-left: -8px;
+    padding: 10px;
+    border: 1px solid rgb(192, 192, 192);
+    border-top: none;
+    background-color: white;
+    width: 300px;
+}
+
+.dropDownContent div>span {
+    padding: 3px 10px;
+    font-weight: 700;
+}
+
+.dropDownContent div>a {
+    padding: 3px 10px;
+}
+
+.dropDownContent div>a:hover {
+    background-color: rgb(224, 223, 223);
+}
+
+div.item {
+    width: 60px;
+    float: left;
+}
+
+div.item-long {
+    width: 100px;
+    float: left;
+}
+
+.bottomArrow {
+    font-size: 8px;
+    position: relative;
+    margin: 4px;
+}
+
+/**
+ * 导航区域
+ */
+nav {
+    margin-top: 100px;
+    width: 100%;
+    float: left;
+    background-color: rgb(240, 241, 242);
+}
+
+nav .classicfication {
+    width: fit-content;
+    margin: 10px 0px;
+    background-color: #fff;
+}
+
+nav .classicfication li {
+    padding-left: 20px;
+    width: 190px;
+    height: 28px;
+    line-height: 28px;
+}
+
+nav .classicfication>li:hover {
+    background-color: rgb(224, 223, 223);
+}
+
+/**
+ * 中间轮播图
+ */
+.carousel {
+    position: relative;
+    margin: 10px 10px;
+    width: 700px;
+    height: 504px;
+    background-color: white;
+}
+
+.carousel ul:first-child li {
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    position: absolute;
+}
+
+.carousel ul:first-child li>img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel ul:first-child li.show {
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 1000ms ease-in-out;
+}
+
+.carousel .index {
+    z-index: 1;
+    width: 210px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 30px;
+}
+
+.carousel .index>li {
+    float: left;
+    width: 30px;
+    height: 30px;
+    opacity: 0.8;
+    text-align: center;
+    line-height: 30px;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+}
+
+.carousel .index>li.current {
+    background: rgb(236, 61, 61);
+}
+
+/**
+ * 右侧轮播图
+ */
+.carousel_right {
+    position: relative;
+    width: 190px;
+    margin: 10px 0px;
+    background-color: #fff;
+}
+
+.carousel_right ul>li {
+    margin-bottom: 10px;
+    height: 158px;
+    background-color: #ccc;
+}
+
+.carousel_right ul>li:nth-child(3) {
+    margin-bottom: 0px;
+    height: 168px;
+}
+
+.carousel_right li img {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.carousel_right button {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 35px;
+    background-color: #949799;
+}
+
+.carousel_right button.show {
+    opacity: 0.7;
+    transition: opactity 1s ease-in-out;
+}
+
+.carousel_right button.hide {
+    opacity: 0;
+    transition: opactity 1s ease-in-out;
+}
+
+.carousel_right button:hover {
+    cursor: pointer;
+    background-color: #6d6a63;
+}
+
+.carousel_right button>span {
+    position: relative;
+    font-weight: 900;
+    color: #fff;
+    font-size: 12px/1.5;
+    font-family: monospace;
+    -webkit-user-select: none;
+}
+
+.carousel_right .button_left>span {
+    left: -2px;
+}
+
+.carousel_right .button_right>span {
+    right: -2px;
+}
+
+.carousel_right button.button_left {
+    left: 0px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+
+.carousel_right button.button_right {
+    right: 0px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+
+/**
+ * 其他
+ */
+nav div.other {
+    position: relative;
+    width: 190px;
+    height: 504px;
+    margin: 10px 0px 10px 10px;
+    background-color: #fff;
+}
+
+/**
+ * 其他 > vip
+ */
+nav div.other .vip {
+    height: 158px;
+}
+
+nav div.other .vip>div:nth-child(1) {
+    width: 190px;
+    height: 80px;
+}
+
+nav div.other .vip div.head_img {
+    overflow: hidden;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    border: 2px solid #eee;
+    background-color: #fff;
+    background-size: cover;
+    background-image: url(https://img-blog.csdnimg.cn/20201011132854978.jpg);
+}
+
+nav div.other .vip div.login {
+    margin-top: 30px;
+    margin-left: 10px;
+    -webkit-user-select: none;
+}
+
+nav div.other .vip div.buttons {
+    margin-top: 10px;
+    text-align: center;
+    -webkit-user-select: none;
+}
+
+nav div.other .vip div.buttons button {
+    width: 70px;
+    height: 25px;
+    border-radius: 12.5px;
+    cursor: pointer;
+}
+
+nav div.other .vip div.buttons button:first-child {
+    background-color: red;
+    color: white;
+}
+
+nav div.other .vip div.buttons button:first-child:hover {
+    background-color: black;
+}
+
+nav div.other .vip div.buttons button:last-child {
+    background-color: black;
+    color: gold;
+}
+
+nav div.other .vip div.buttons button:last-child:hover {
+    background-color: red;
+}
