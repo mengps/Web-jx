@@ -1,9 +1,7 @@
 function randomColor(min = 0, max = 255) {
     min = Math.max(0, min);
     max = Math.min(255, max);
-    let random = () => {
-        return parseInt(Math.random() * (max - min) + min);
-    }
+    let random = () => parseInt(Math.random() * (max - min) + min);
     return 'rgb(' + random() + ',' + random() + ',' + random() + ')';
 }
 
@@ -79,14 +77,11 @@ $(document).ready(() => {
     }
     indices.children().on('mouseover', function() {
         stopPlay();
-        let src = $(this);
-        currentIndex = src.index();
+        currentIndex = $(this).index();
         move(currentIndex);
     });
     //移出时重启自动播放
-    indices.on('mouseleave', () => {
-        startPlay();
-    });
+    indices.on('mouseleave', startPlay);
     startPlay();
 
     //右侧轮播图事件绑定
@@ -110,11 +105,9 @@ $(document).ready(() => {
             $(this).attr('src', 'images/carousel_right/' + Math.floor(Math.random() * 9) + '.webp');
         }); 
     }
-    buttons.on('click', () => random_carousel());
+    buttons.on('click', random_carousel);
     //自动轮换
-    let rightCarouselTimer = setInterval(() => {
-        random_carousel();
-    }, 8000);
+    let rightCarouselTimer = setInterval(random_carousel, 8000);
     //启动第一次
     random_carousel();
 });
