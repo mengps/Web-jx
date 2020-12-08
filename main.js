@@ -29,6 +29,18 @@ function adjustDropDownContentPostion(content) {
     }
 }
 
+function addTabViewEvent(tabView) {
+    let tabs = tabView.children('ul').children();
+    let contents = tabView.children('.content');
+    tabs.on('mouseover', function() {
+        let $this = $(this);
+        tabs.removeClass('current');
+        $this.addClass('current');
+        contents.removeClass('current');
+        $(contents[$this.index()]).addClass('current');
+    })
+}
+
 $(document).ready(() => {
     //快捷栏事件绑定
     let dropDownButtons = document.getElementsByClassName('dropDownButton');
@@ -110,4 +122,16 @@ $(document).ready(() => {
     let rightCarouselTimer = setInterval(random_carousel, 8000);
     //启动第一次
     random_carousel();
+
+    //最右侧其他栏事件绑定
+    let quick_life = $('nav .other .quick_life');
+    let imageList = quick_life.children('ul').children('li');
+    let tab_view = quick_life.find('div.tab_view');
+    addTabViewEvent(tab_view);
+    imageList.on('mouseover', () => {
+        tab_view.addClass('show');
+    });
+    tab_view.on('mouseleave', () => {
+        tab_view.removeClass('show');
+    });
 });
