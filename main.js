@@ -34,8 +34,8 @@ function addTabViewEvent(tabView) {
     let contents = tabView.children('.content');
     tabs.on('mouseover', function() {
         let $this = $(this);
-        tabs.removeClass('current');
-        $this.addClass('current');
+        tabs.children('div').removeClass('current');
+        $this.children('div').addClass('current');
         contents.removeClass('current');
         $(contents[$this.index()]).addClass('current');
     })
@@ -128,10 +128,16 @@ $(document).ready(() => {
     let imageList = quick_life.children('ul').children('li');
     let tab_view = quick_life.find('div.tab_view');
     addTabViewEvent(tab_view);
-    imageList.on('mouseover', () => {
+    imageList.on('mouseover', function() {
+        $(this).children('img:first-child').hide();
+        $(this).children('img.hover').show();
         tab_view.addClass('show');
     });
-    tab_view.on('mouseleave', () => {
+    imageList.on('mouseleave', function() {
+        $(this).children('img:first-child').show();
+        $(this).children('img.hover').hide();
+    });
+    tab_view.on('mouseleave', function() {
         tab_view.removeClass('show');
     });
 });

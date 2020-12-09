@@ -329,9 +329,11 @@ nav div.other .vip div.buttons button:last-child:hover {
 
 nav .other .seperator {
     width: 70%;
+    
     height: 1px;
     margin: 0px auto;
     margin-top: 15px;
+    background-color: gray;
     background-image: linear-gradient(to right, white 0%, gray 50%, white 100%);
 }
 
@@ -401,6 +403,10 @@ nav .other .quick_life li>img {
     cursor: pointer;
 }
 
+nav .other .quick_life li>img.hover {
+    display: none;
+}
+
 nav .other .quick_life li>p {
     margin: 0px 18px;
     cursor: pointer;
@@ -427,8 +433,17 @@ nav .other .quick_life .tab {
     cursor: pointer;
 }
 
-nav .other .quick_life .tab.current {
-    border-bottom: 3px solid red;
+nav .other .quick_life .tab>div {
+    display: none;
+    width: 70%;
+    height: 2px;
+    margin: 0px auto;
+    background-color: red;
+    background-image: linear-gradient(to right, white 0%, red 50%, white 100%);
+}
+
+nav .other .quick_life .tab>div.current {
+    display: block;    
 }
 
 nav .other .quick_life div.content {
