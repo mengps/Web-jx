@@ -129,9 +129,10 @@ $(document).ready(() => {
     let tab_view = quick_life.find('div.tab_view');
     addTabViewEvent(tab_view);
     imageList.on('mouseover', function() {
-        $(this).children('img:first-child').hide();
-        $(this).children('img.hover').show();
-        tab_view.addClass('show');
+        let $this = $(this);
+        $this.children('img:first-child').hide();
+        $this.children('img.hover').show();
+        if ($this.index() < 4) tab_view.addClass('show');
     });
     imageList.on('mouseleave', function() {
         $(this).children('img:first-child').show();
@@ -139,5 +140,11 @@ $(document).ready(() => {
     });
     tab_view.on('mouseleave', function() {
         tab_view.removeClass('show');
+    });
+    //点击其他地方也会隐藏tab_view
+    window.addEventListener('click', (e) => {
+        if ($(e.target).parents('div.tab_view').length === 0) {
+            tab_view.removeClass('show');
+        }
     });
 });

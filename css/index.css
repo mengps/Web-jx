@@ -100,6 +100,7 @@ nav {
 nav .classicfication {
     width: fit-content;
     margin: 10px 0px;
+    padding: 20px 0px;
     background-color: #fff;
 }
 
@@ -121,7 +122,7 @@ nav .classicfication>li:hover {
     position: relative;
     margin: 10px 10px;
     width: 700px;
-    height: 504px;
+    height: 544px;
     background-color: white;
 }
 
@@ -184,13 +185,13 @@ nav .classicfication>li:hover {
 
 .carousel_right ul>li {
     margin-bottom: 10px;
-    height: 158px;
+    height: 171px;
     background-color: #ccc;
 }
 
 .carousel_right ul>li:nth-child(3) {
     margin-bottom: 0px;
-    height: 168px;
+    height: 181px;
 }
 
 .carousel_right li img {
@@ -260,7 +261,7 @@ nav .classicfication>li:hover {
 nav div.other {
     position: relative;
     width: 190px;
-    height: 504px;
+    height: 544px;
     margin: 10px 0px 10px 10px;
     background-color: #fff;
 }
@@ -329,7 +330,6 @@ nav div.other .vip div.buttons button:last-child:hover {
 
 nav .other .seperator {
     width: 70%;
-    
     height: 1px;
     margin: 0px auto;
     margin-top: 15px;
@@ -385,36 +385,37 @@ nav .other .newspaper li>a>span {
 nav .other .quick_life {
     position: relative;
     overflow: hidden;
-    height: 215px;
-    margin-top: 15px;
+    height: 255px;
+    margin-top: 5px;
 }
 
-nav .other .quick_life li {
+nav .other .quick_life .quick_life_ul>li {
     float: left;
     width: 60px;
-    height: 64px;
+    height: 44px;
+    margin: 10px 0px;
     -webkit-user-select: none;
 }
 
-nav .other .quick_life li>img {
+nav .other .quick_life li img {
     width: 28x;
     height: 28px;
     margin: 0px 16px;
     cursor: pointer;
 }
 
-nav .other .quick_life li>img.hover {
+nav .other .quick_life li img.hover {
     display: none;
 }
 
-nav .other .quick_life li>p {
-    margin: 0px 18px;
+nav .other .quick_life li p {
     cursor: pointer;
+    text-align: center;
 }
 
 nav .other .quick_life .tab_view {
     position: absolute;
-    top: 215px;
+    top: 255px;
     background-color: white;
     transition: top 200ms linear;
 }
@@ -449,8 +450,8 @@ nav .other .quick_life .tab>div.current {
 nav .other .quick_life div.content {
     display: none;
     width: 190px;
-    height: 190px;
-    line-height: 200px;
+    height: 230px;
+    line-height: 230px;
     text-align: center;
 }
 
