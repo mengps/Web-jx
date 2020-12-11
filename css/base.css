@@ -138,3 +138,8 @@ s, i, em {
 .hide {
     display: none
 }
+
+.hcenter {
+    left: 50%;
+    transform: translateX(-50%);
+}
