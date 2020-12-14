@@ -498,7 +498,7 @@ div.seckill .playbill .countdown_time>.time {
     margin-right: 4px;
 }
 
-div.seckill .playbill>.countdown {
+.seckill .playbill>.countdown {
     position: relative;
     margin-top: 18px;
     float: left;
@@ -506,7 +506,7 @@ div.seckill .playbill>.countdown {
     color: white;
 }
 
-div.seckill .playbill>.countdown>p {
+.seckill .playbill>.countdown>p {
     position: relative;
     width: 36px;
     height: 36px;
@@ -514,12 +514,16 @@ div.seckill .playbill>.countdown>p {
     text-align: center;
 }
 
-div.seckill .playbill>.countdown>p:nth-child(-n+2) {
+.seckill .playbill>.countdown>p:nth-child(-n+2) {
     margin-right: 20px;
 }
 
-div.seckill .playbill>.countdown>p:nth-child(-n+2)::after {
+.seckill .playbill>.countdown>p:nth-child(-n+2)::after {
     position: absolute;
     content: ":";
-    right: -15px;
+    right: -14px;
+}
+
+.seckill .carousel {
+    margin-left: 10px;
 }

@@ -97,19 +97,19 @@ $(document).ready(() => {
     startPlay();
 
     //右侧轮播图事件绑定
-    let carousel_right = $('nav div.carousel_right');
-    let buttons = carousel_right.children('button');
-    carousel_right.on('mouseover', () => {
+    let carouselRight = $('nav div.carousel_right');
+    let buttons = carouselRight.children('button');
+    carouselRight.on('mouseover', () => {
         buttons.removeClass('hide');
         buttons.addClass('show');
     });
-    carousel_right.on('mouseout', () => {
+    carouselRight.on('mouseout', () => {
         buttons.removeClass('show');
         buttons.addClass('hide');
     });
-    let random_carousel = function() {
-        let images = carousel_right.find('img');
-        let list = carousel_right.find('li');
+    let randomCarousel = function() {
+        let images = carouselRight.find('img');
+        let list = carouselRight.find('li');
         list.each(function() {
             $(this).css('background-color', randomColor(128, 255));
         })
@@ -117,34 +117,65 @@ $(document).ready(() => {
             $(this).attr('src', 'images/carousel_right/' + Math.floor(Math.random() * 9) + '.webp');
         }); 
     }
-    buttons.on('click', random_carousel);
+    buttons.on('click', randomCarousel);
     //自动轮换
-    let rightCarouselTimer = setInterval(random_carousel, 8000);
+    let rightCarouselTimer = setInterval(randomCarousel, 8000);
     //启动第一次
-    random_carousel();
+    randomCarousel();
 
     //最右侧其他栏事件绑定
     let quick_life = $('nav .other .quick_life');
     let imageList = quick_life.children('ul').children('li');
-    let tab_view = quick_life.find('div.tab_view');
-    addTabViewEvent(tab_view);
+    let tabView = quick_life.find('div.tabView');
+    addTabViewEvent(tabView);
     imageList.on('mouseover', function() {
         let $this = $(this);
         $this.children('img:first-child').hide();
         $this.children('img.hover').show();
-        if ($this.index() < 4) tab_view.addClass('show');
+        if ($this.index() < 4) tabView.addClass('show');
     });
     imageList.on('mouseleave', function() {
         $(this).children('img:first-child').show();
         $(this).children('img.hover').hide();
     });
-    tab_view.on('mouseleave', function() {
-        tab_view.removeClass('show');
+    tabView.on('mouseleave', function() {
+        tabView.removeClass('show');
     });
-    //点击其他地方也会隐藏tab_view
+    //点击其他地方也会隐藏tabView
     window.addEventListener('click', (e) => {
-        if ($(e.target).parents('div.tab_view').length === 0) {
-            tab_view.removeClass('show');
+        if ($(e.target).parents('div.tabView').length === 0) {
+            tabView.removeClass('show');
         }
     });
+
+    //限时秒杀部分
+    let seckill = $('div.seckill');
+    let seckillTime = seckill.find('p.time');
+    let countdown = seckill.find('.countdown');
+    let countdownHours = countdown.children('.hours');
+    let countdownMinutes = countdown.children('.minutes');
+    let countdownSeconds = countdown.children('.seconds');
+    let nextSeconds = 0;
+    let normalizeTime = x => x < 10 ? '0' + x : x;
+    let restartSeckill = () => {
+        let date = new Date();
+        //距离下一场的小时(+2~4)
+        let nextDiff = parseInt(Math.random() * 3 + 2);
+        //距离下一场的秒数
+        nextSeconds = nextDiff * 3600 + (59 - date.getMinutes()) * 60 + 60 - date.getSeconds();
+        //下一场秒杀时间(整点)
+        let nextSeckill = normalizeTime((date.getHours() + nextDiff) % 24);
+        seckillTime.text(nextSeckill + ':00');
+    }
+    //启动倒计时
+    restartSeckill();
+    let countdownTimer = setInterval(() => {
+        countdownHours.text(normalizeTime(Math.floor(nextSeconds / 3600)));
+        countdownMinutes.text(normalizeTime(Math.floor(nextSeconds / 60) % 60));
+        countdownSeconds.text(normalizeTime(nextSeconds % 60));
+        if (--nextSeconds === 0)
+            restartSeckill();
+    }, 1000);
+
+    //限时秒杀右侧轮播图
 });
