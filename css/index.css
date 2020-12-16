@@ -29,7 +29,7 @@ li.seperator {
  * 版心（可视区）。需要专门提取出来
  */
 .w {
-    width: 1320px;
+    width: 1420px;
     margin: auto;
 }
 
@@ -118,147 +118,96 @@ nav .classicfication>li:hover {
 /**
  * 中间轮播图
  */
-.carousel {
+nav .carousel {
     position: relative;
     margin: 10px 10px;
-    width: 700px;
+    width: 800px;
     height: 544px;
     background-color: white;
 }
 
-.carousel ul:first-child li {
+nav .carousel ul:first-child li {
     width: 100%;
     height: 100%;
     opacity: 0.2;
     position: absolute;
 }
 
-.carousel ul:first-child li img {
+nav .carousel ul:first-child li img {
     width: 100%;
     height: 100%;
 }
 
-.carousel ul:first-child li.show {
+nav .carousel ul:first-child li.show {
     z-index: 1;
     opacity: 1;
     transition: opacity 1000ms ease-in-out;
 }
 
-.carousel .index {
+nav .carousel .index {
+    position: absolute;
     z-index: 1;
     width: 220px;
     height: 30px;
-    position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
     bottom: 30px;
 }
 
-.carousel .index>li {
+nav .carousel .index>li {
     float: left;
     width: 30px;
     height: 30px;
-    border-radius: 15px;
+    color: #000;
+    background: #d3feff;
+    border: 2px solid #d3feff;
+    border-radius: 17px;
     opacity: 0.8;
+    font-size: 0.8rem;
     text-align: center;
     line-height: 30px;
-    background: #fff;
-    border: 1px solid #ccc;
     margin-left: 10px;
     cursor: pointer;
     -webkit-user-select: none;
 }
 
-.carousel .index>li.current {
-    background: rgb(236, 61, 61);
+nav .carousel .index>li.current {
+    background: #fa3b3b;
 }
 
 /**
  * 右侧轮播图
  */
-.carousel_right {
+nav .carousel_right {
     position: relative;
     width: 190px;
     margin: 10px 0px;
     background-color: #fff;
 }
 
-.carousel_right ul>li {
+nav .carousel_right ul>li {
     margin-bottom: 10px;
     height: 171px;
     background-color: #ccc;
 }
 
-.carousel_right ul>li:nth-child(3) {
+nav .carousel_right ul>li:nth-child(3) {
     margin-bottom: 0px;
-    height: 181px;
+    height: 182px;
 }
 
-.carousel_right li img {
+nav .carousel_right li img {
     position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-.carousel_right button {
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 22px;
-    height: 35px;
-    background-color: #949799;
-}
-
-.carousel_right button.show {
-    opacity: 0.7;
-    transition: opactity 1s ease-in-out;
-}
-
-.carousel_right button.hide {
-    opacity: 0;
-    transition: opactity 1s ease-in-out;
-}
-
-.carousel_right button:hover {
-    cursor: pointer;
-    background-color: #6d6a63;
-}
-
-.carousel_right button>span {
-    position: relative;
-    font-weight: 900;
-    color: #fff;
-    font-size: 12px/1.5;
-    font-family: monospace;
-    -webkit-user-select: none;
-}
-
-.carousel_right .button_left>span {
-    left: -2px;
-}
-
-.carousel_right .button_right>span {
-    right: -2px;
-}
-
-.carousel_right button.button_left {
-    left: 0px;
-    border-top-right-radius: 18px;
-    border-bottom-right-radius: 18px;
-}
-
-.carousel_right button.button_right {
-    right: 0px;
-    border-top-left-radius: 18px;
-    border-bottom-left-radius: 18px;
-}
 
 /**
  * 其他
  */
-nav div.other {
+nav .other {
     position: relative;
     width: 190px;
     height: 544px;
@@ -269,16 +218,16 @@ nav div.other {
 /**
  * 其他 > vip
  */
-nav div.other .vip {
+nav .other .vip {
     width: 190px;
 }
 
-nav div.other .vip>div:nth-child(1) {
+nav .other .vip>div:nth-child(1) {
     width: 190px;
     height: 80px;
 }
 
-nav div.other .vip div.head_img {
+nav .other .vip div.head_img {
     overflow: hidden;
     margin-top: 15px;
     margin-left: 15px;
@@ -291,40 +240,40 @@ nav div.other .vip div.head_img {
     background-image: url(https://img-blog.csdnimg.cn/20201011132854978.jpg);
 }
 
-nav div.other .vip div.login {
+nav .other .vip div.login {
     margin-top: 30px;
     margin-left: 10px;
     -webkit-user-select: none;
 }
 
-nav div.other .vip div.buttons {
+nav .other .vip .buttons {
     margin-top: 10px;
     text-align: center;
     -webkit-user-select: none;
 }
 
-nav div.other .vip div.buttons button {
+nav .other .vip .buttons button {
     width: 70px;
     height: 25px;
     border-radius: 12.5px;
     cursor: pointer;
 }
 
-nav div.other .vip div.buttons button:first-child {
+nav .other .vip .buttons button:first-child {
     background-color: red;
     color: white;
 }
 
-nav div.other .vip div.buttons button:first-child:hover {
+nav .other .vip div.buttons button:first-child:hover {
     background-color: black;
 }
 
-nav div.other .vip div.buttons button:last-child {
+nav .other .vip div.buttons button:last-child {
     background-color: black;
     color: gold;
 }
 
-nav div.other .vip div.buttons button:last-child:hover {
+nav .other .vip div.buttons button:last-child:hover {
     background-color: red;
 }
 
@@ -460,7 +409,7 @@ nav .other .quick_life div.current {
 }
 
 /**
- * 限时秒杀
+ * 限时秒杀倒计时部分
  */
 div.seckill {
     margin-top: 20px;
@@ -524,6 +473,96 @@ div.seckill .playbill .countdown_time>.time {
     right: -14px;
 }
 
+/**
+ * 限时秒杀轮播部分
+ */
 .seckill .carousel {
-    margin-left: 10px;
+    position: relative;
+    height: 260px;
+    margin: auto 10px;
+    background-color: #fff;
+}
+
+.seckill .carousel ul>li {
+    position: relative;
+    margin-right: 10px;
+    width: 200px;
+    height: 260px;
+    background-color: #ddd;
+}
+
+.seckill .carousel ul>li:last-child {
+    margin-right: 0px;
+}
+
+.seckill .carousel li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.seckill .carousel li img {
+    position: relative;
+    max-width: 90%;
+    max-height: 55%;
+    display: block;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.seckill .carousel li p {
+    margin: 10px 0px 0px 20px;
+    height: 40px;
+    line-height: 40px;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #58667a;
+}
+
+/**
+ * 限时秒杀价格部分
+ */
+.seckill .carousel .price {
+    position: relative;
+    margin: 0px auto;
+    width: 156px;
+    height: 24px;
+}
+
+.seckill .carousel .price span {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.seckill .carousel .price .left {
+    width: 50%;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border-top-left-radius: 12px;
+    background-color: red;
+}
+
+.seckill .carousel .price .left::after {
+    position: absolute;
+    content: " ";
+    left: 50%;
+    border-style: solid;
+    border-width: 12px 5px;
+    border-color: red transparent transparent red;
+}
+
+.seckill .carousel .price .right {
+    width: 50%;
+    color: #888;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: line-through;
+    border-bottom-right-radius: 12px;
+    background-color: white;
 }

@@ -22,8 +22,8 @@ function adjustDropDownContentPostion(content) {
     let $content = $(content);
     let button = $content.parent('.dropDownButton')[0];
     let buttonLeft = button.offsetLeft;
-    console.log(buttonLeft, contentWidth, w.offsetWidth);
-    if ((buttonLeft + contentWidth) > (w.offsetWidth)) {
+    console.log(buttonLeft, contentWidth, w.offsetWidth + w.offsetLeft);
+    if ((buttonLeft + contentWidth) > (w.offsetWidth + w.offsetLeft)) {
         $content.css('left', button.offsetLeft - contentWidth + button.offsetWidth 
             + -parseInt($content.css('margin-left')) + 'px');
     }
@@ -97,8 +97,8 @@ $(document).ready(() => {
     startPlay();
 
     //右侧轮播图事件绑定
-    let carouselRight = $('nav div.carousel_right');
-    let buttons = carouselRight.children('button');
+    let carouselRight = $('nav .carousel_right');
+    let buttons = carouselRight.children('.flip_button');
     carouselRight.on('mouseover', () => {
         buttons.removeClass('hide');
         buttons.addClass('show');
@@ -155,6 +155,39 @@ $(document).ready(() => {
     let countdownHours = countdown.children('.hours');
     let countdownMinutes = countdown.children('.minutes');
     let countdownSeconds = countdown.children('.seconds');
+
+    //限时秒杀右侧轮播图
+    let seckillCarousel = $('.seckill .carousel');
+    let seckillButtons = seckillCarousel.children('.flip_button');
+    seckillCarousel.on('mouseover', () => {
+        seckillButtons.removeClass('hide');
+        seckillButtons.addClass('show');
+    });
+    seckillCarousel.on('mouseout', () => {
+        seckillButtons.removeClass('show');
+        seckillButtons.addClass('hide');
+    });
+    let seckillRandom = function() {
+        let images = seckillCarousel.find('img');
+        let prices = seckillCarousel.find('.price');
+        images.each(function() {
+            $(this).attr('src', 'images/seckill/' + Math.floor(Math.random() * 9) + '.gif');
+        });
+        prices.each(function() {
+            let left = $(this).children('.left');
+            let right = $(this).children('.right');
+            let randomPrice = parseInt(Math.random() * 9999);
+            //随机立减500~2000,为0打5折👋
+            let nowPrice = parseInt(randomPrice - (Math.random() * 1500 + 500));
+            nowPrice = Math.max(parseInt(randomPrice / 2), nowPrice);
+            left.text('￥' + nowPrice + '.00');
+            right.text('￥' + randomPrice + '.00');
+        })
+    }
+    seckillButtons.on('click', seckillRandom);
+    seckillRandom();
+
+    //限时秒杀倒计时
     let nextSeconds = 0;
     let normalizeTime = x => x < 10 ? '0' + x : x;
     let restartSeckill = () => {
@@ -173,9 +206,9 @@ $(document).ready(() => {
         countdownHours.text(normalizeTime(Math.floor(nextSeconds / 3600)));
         countdownMinutes.text(normalizeTime(Math.floor(nextSeconds / 60) % 60));
         countdownSeconds.text(normalizeTime(nextSeconds % 60));
-        if (--nextSeconds === 0)
+        if (--nextSeconds === 0) {
             restartSeckill();
+            seckillRandom();
+        }
     }, 1000);
-
-    //限时秒杀右侧轮播图
 });
