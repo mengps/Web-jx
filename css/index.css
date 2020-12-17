@@ -474,49 +474,51 @@ div.seckill .playbill .countdown_time>.time {
 }
 
 /**
- * 限时秒杀轮播部分
+ * 限时秒杀切换视图部分
  */
-.seckill .carousel {
+.seckill .switch_view {
     position: relative;
     height: 260px;
     margin: auto 10px;
     background-color: #fff;
 }
 
-.seckill .carousel ul>li {
+.seckill .switch_view ul>li {
     position: relative;
     margin-right: 10px;
-    width: 200px;
+    width: 235px;
     height: 260px;
     background-color: #ddd;
 }
 
-.seckill .carousel ul>li:last-child {
+.seckill .switch_view ul>li:last-child {
     margin-right: 0px;
 }
 
-.seckill .carousel li a {
+.seckill .switch_view li a {
     display: inline-block;
     width: 100%;
     height: 100%;
+    background-image: linear-gradient(to bottom, #bbb 0%, #ddd 100%);
 }
 
-.seckill .carousel li img {
+.seckill .switch_view li img {
     position: relative;
+    display: block;
     max-width: 90%;
     max-height: 55%;
-    display: block;
     margin-top: 20px;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.seckill .carousel li p {
+.seckill .switch_view li p {
     margin: 10px 0px 0px 20px;
     height: 40px;
     line-height: 40px;
     width: 90%;
     overflow: hidden;
+    text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: #58667a;
@@ -525,21 +527,21 @@ div.seckill .playbill .countdown_time>.time {
 /**
  * 限时秒杀价格部分
  */
-.seckill .carousel .price {
+.seckill .switch_view .price {
     position: relative;
     margin: 0px auto;
     width: 156px;
     height: 24px;
 }
 
-.seckill .carousel .price span {
+.seckill .switch_view .price span {
     float: left;
     height: 24px;
     line-height: 24px;
     text-align: center;
 }
 
-.seckill .carousel .price .left {
+.seckill .switch_view .price .left {
     width: 50%;
     color: #fff;
     font-size: 14px;
@@ -548,7 +550,7 @@ div.seckill .playbill .countdown_time>.time {
     background-color: red;
 }
 
-.seckill .carousel .price .left::after {
+.seckill .switch_view .price .left::after {
     position: absolute;
     content: " ";
     left: 50%;
@@ -557,7 +559,7 @@ div.seckill .playbill .countdown_time>.time {
     border-color: red transparent transparent red;
 }
 
-.seckill .carousel .price .right {
+.seckill .switch_view .price .right {
     width: 50%;
     color: #888;
     font-size: 12px;
@@ -565,4 +567,100 @@ div.seckill .playbill .countdown_time>.time {
     text-decoration: line-through;
     border-bottom-right-radius: 12px;
     background-color: white;
+}
+
+/**
+ * 限时秒杀最右侧轮播部分
+ */
+.seckill .carousel {
+    overflow: hidden;
+    position: relative;
+    width: 240px;
+    height: 260px;
+    background-image: linear-gradient(to bottom, #bbb 0%, #ddd 100%);
+}
+
+.seckill .carousel a {
+    position: absolute;
+    height: 100%;
+}
+
+.seckill .carousel ul.images {
+    position: relative;
+    width: 400%;
+}
+
+.seckill .carousel .images li {
+    float: left;
+    width: 240px;
+    position: relative;
+}
+
+.seckill .carousel .images li img {
+    position: relative;
+    display: block;
+    max-width: 90%;
+    height: 50%;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.seckill .carousel .images li p {
+    margin: 5px 0px 0px 0px;
+    height: 18px;
+    line-height: 18px;
+    color: #58667a;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.seckill .carousel .images li p:nth-child(2) {
+    font-weight: normal;
+}
+
+.seckill .carousel .images button {
+    position: relative;
+    left: 50%;
+    margin-top: 5px;
+    width: 40%;
+    height: 24px;
+    border-radius: 12px;
+    border: 1px solid red;
+    transform: translateX(-50%);
+    color: red;
+    font-weight: 800;
+}
+
+.seckill .carousel .images button:hover {
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
+
+.seckill .carousel .index {
+    position: relative;
+    margin-top: 10px;
+    width: 240px;
+}
+
+.seckill .carousel .index li {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: gray;
+}
+
+.seckill .carousel .index li.current {
+    background-color: red;
+}
+
+.seckill .carousel .index .left {
+    left: 108px;
+}
+
+.seckill .carousel .index .right {
+    right: 108px;
 }

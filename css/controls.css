@@ -2,23 +2,19 @@
  * slider button
  */
 button.flip_button {
-    opacity: 0;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 22px;
     height: 35px;
     background-color: #949799;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
 }
 
 button.flip_button.show {
     opacity: 0.6;
-    transition: opacity 800ms ease-in-out;
-}
-
-button.flip_button.hide {
-    opacity: 0;
-    transition: opacity 800ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
 }
 
 button.flip_button:hover {

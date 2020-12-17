@@ -100,12 +100,10 @@ $(document).ready(() => {
     let carouselRight = $('nav .carousel_right');
     let buttons = carouselRight.children('.flip_button');
     carouselRight.on('mouseover', () => {
-        buttons.removeClass('hide');
         buttons.addClass('show');
     });
     carouselRight.on('mouseout', () => {
         buttons.removeClass('show');
-        buttons.addClass('hide');
     });
     let randomCarousel = function() {
         let images = carouselRight.find('img');
@@ -126,7 +124,7 @@ $(document).ready(() => {
     //最右侧其他栏事件绑定
     let quick_life = $('nav .other .quick_life');
     let imageList = quick_life.children('ul').children('li');
-    let tabView = quick_life.find('div.tabView');
+    let tabView = quick_life.find('div.tab_view');
     addTabViewEvent(tabView);
     imageList.on('mouseover', function() {
         let $this = $(this);
@@ -143,7 +141,7 @@ $(document).ready(() => {
     });
     //点击其他地方也会隐藏tabView
     window.addEventListener('click', (e) => {
-        if ($(e.target).parents('div.tabView').length === 0) {
+        if ($(e.target).parents('div.tab_view').length === 0) {
             tabView.removeClass('show');
         }
     });
@@ -156,20 +154,18 @@ $(document).ready(() => {
     let countdownMinutes = countdown.children('.minutes');
     let countdownSeconds = countdown.children('.seconds');
 
-    //限时秒杀右侧轮播图
-    let seckillCarousel = $('.seckill .carousel');
-    let seckillButtons = seckillCarousel.children('.flip_button');
-    seckillCarousel.on('mouseover', () => {
-        seckillButtons.removeClass('hide');
+    //限时秒杀右侧切换视图
+    let seckillSwitchView = $('.seckill .switch_view');
+    let seckillButtons = seckillSwitchView.children('.flip_button');
+    seckillSwitchView.on('mouseover', () => {
         seckillButtons.addClass('show');
     });
-    seckillCarousel.on('mouseout', () => {
+    seckillSwitchView.on('mouseout', () => {
         seckillButtons.removeClass('show');
-        seckillButtons.addClass('hide');
     });
     let seckillRandom = function() {
-        let images = seckillCarousel.find('img');
-        let prices = seckillCarousel.find('.price');
+        let images = seckillSwitchView.find('img');
+        let prices = seckillSwitchView.find('.price');
         images.each(function() {
             $(this).attr('src', 'images/seckill/' + Math.floor(Math.random() * 9) + '.gif');
         });
@@ -177,7 +173,7 @@ $(document).ready(() => {
             let left = $(this).children('.left');
             let right = $(this).children('.right');
             let randomPrice = parseInt(Math.random() * 9999);
-            //随机立减500~2000,为0打5折👋
+            //随机立减500~2000,小于0打5折👋不愧是我(^==^)
             let nowPrice = parseInt(randomPrice - (Math.random() * 1500 + 500));
             nowPrice = Math.max(parseInt(randomPrice / 2), nowPrice);
             left.text('￥' + nowPrice + '.00');
@@ -211,4 +207,41 @@ $(document).ready(() => {
             seckillRandom();
         }
     }, 1000);
+
+    //限时秒杀最右侧轮播
+    let seckillCarouselList = seckill.find('.carousel ul.images');
+    let imageUrls = [];
+    let seckillCarouselRandom = () => {
+        imageUrls.length = 0;
+        for (let i = 0; i < 2; i++) {
+            imageUrls.push('images/seckill/' + Math.floor(Math.random() * 9) + '.gif');
+        }
+    }
+    let runSeckillCarousel = function() {
+        seckillCarouselRandom();
+        seckillCarouselList.find('img').each(function(index) {
+            $(this).attr('src', imageUrls[index % 2]);
+        });
+        let width = seckill.find('.carousel')[0].offsetWidth;
+        let offset = -width;
+        let index = seckill.find('.carousel ul.index');
+        let left = index.children('.left');
+        let right = index.children('.right');
+        setInterval(() => {
+            seckillCarouselList.animate({ left: offset + 'px' }, 800, 'linear', () => {
+                if ((offset -= width) === -width * 3){
+                    seckillCarouselList.css('left', '0px');
+                    offset = -width;
+                }
+            });
+            if (left.hasClass('current')) {
+                left.removeClass('current');
+                right.addClass('current');
+            } else {
+                left.addClass('current');
+                right.removeClass('current');
+            }
+        }, 2000);
+    }
+    runSeckillCarousel();
 });
