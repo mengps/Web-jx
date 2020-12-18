@@ -6,7 +6,6 @@
 .shortcut {
     height: 30px;
     line-height: 28px;
-    background-color: rgb(240, 241, 242);
 }
 
 .shortcut li {
@@ -76,7 +75,7 @@ div.item {
     float: left;
 }
 
-div.item-long {
+div.item_long {
     width: 100px;
     float: left;
 }
@@ -88,10 +87,65 @@ div.item-long {
 }
 
 /**
+ * 头部区域
+ */
+ .header {
+    background-color: #fff;
+ }
+
+ .header .w {
+     position: relative;
+ }
+
+.header img {
+    position: absolute;
+    left: 0px;
+    height: 100px;
+}
+
+.header .search {
+    padding-top: 20px;
+    width: 100%;
+    height: 80px;
+}
+
+.header .search .editor {
+    margin: 0px auto;
+    width: 550px;
+    height: 36px;
+    border: 2px solid red;
+}
+
+.header .search .editor input {
+    margin-left: 20px;
+    width: 400px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 0.9rem;
+    font-family: Microsoft YaHei;
+}
+
+.header .hotwords {
+    margin: 10px auto 0px;
+    width: 550px;
+    height: 20px;
+}
+
+.header .hotwords a {
+    float: left;
+    margin-right: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.header .hotwords a:first-child {
+    color: red;
+}
+
+/**
  * 导航区域
  */
 nav {
-    margin-top: 100px;
     width: 100%;
     float: left;
     background-color: rgb(240, 241, 242);
@@ -415,7 +469,6 @@ div.seckill {
     margin-top: 20px;
     width: 100%;
     float: left;
-    background-color: rgb(240, 241, 242);
 }
 
 div.seckill .playbill {

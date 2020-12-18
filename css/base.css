@@ -47,6 +47,8 @@ textarea {
 img {
     border: 0;
     vertical-align: middle;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* 去掉图片底侧默认的3像素空白缝隙*/
@@ -59,7 +61,7 @@ body {
     font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
     /*\5b8b\4f53指的是宋体*/
     color: #666;
-    background: #fff
+    background: #f0f0f0
 }
 
 /*start:清除浮动【推荐此方式进行清除浮动】。左浮动和右浮动都清除了，盒子刚好达到闭合的状态*/

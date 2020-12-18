@@ -196,17 +196,6 @@ $(document).ready(() => {
         let nextSeckill = normalizeTime((date.getHours() + nextDiff) % 24);
         seckillTime.text(nextSeckill + ':00');
     }
-    //启动倒计时
-    restartSeckill();
-    let countdownTimer = setInterval(() => {
-        countdownHours.text(normalizeTime(Math.floor(nextSeconds / 3600)));
-        countdownMinutes.text(normalizeTime(Math.floor(nextSeconds / 60) % 60));
-        countdownSeconds.text(normalizeTime(nextSeconds % 60));
-        if (--nextSeconds === 0) {
-            restartSeckill();
-            seckillRandom();
-        }
-    }, 1000);
 
     //限时秒杀最右侧轮播
     let seckillCarouselList = seckill.find('.carousel ul.images');
@@ -244,4 +233,17 @@ $(document).ready(() => {
         }, 2000);
     }
     runSeckillCarousel();
+
+    //启动秒杀倒计时
+    restartSeckill();
+    let countdownTimer = setInterval(() => {
+        countdownHours.text(normalizeTime(Math.floor(nextSeconds / 3600)));
+        countdownMinutes.text(normalizeTime(Math.floor(nextSeconds / 60) % 60));
+        countdownSeconds.text(normalizeTime(nextSeconds % 60));
+        if (--nextSeconds === 0) {
+            restartSeckill();
+            seckillRandom();
+            seckillCarouselRandom();
+        }
+    }, 1000);
 });
