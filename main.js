@@ -20,7 +20,7 @@ function adjustDropDownContentPostion(content) {
     let w = $('.w')[0];
     let contentWidth = content.offsetWidth;
     let $content = $(content);
-    let button = $content.parent('.dropDownButton')[0];
+    let button = $content.parent('.dropdown_button')[0];
     let buttonLeft = button.offsetLeft;
     console.log(buttonLeft, contentWidth, w.offsetWidth + w.offsetLeft);
     if ((buttonLeft + contentWidth) > (w.offsetWidth + w.offsetLeft)) {
@@ -43,15 +43,15 @@ function addTabViewEvent(tabView) {
 
 $(document).ready(() => {
     //快捷栏事件绑定
-    let dropDownButtons = document.getElementsByClassName('dropDownButton');
+    let dropDownButtons = document.getElementsByClassName('dropdown_button');
     for (let button of dropDownButtons) {
         $(button).on('mouseenter', () => {
-            let content = $(button).children('.dropDownContent');
+            let content = $(button).children('.dropdown_content');
             content.css('display', 'block');
             adjustDropDownContentPostion(content[0]);
         });
         $(button).on('mouseleave', () => {
-            $(button).children('.dropDownContent').css('display', 'none');
+            $(button).children('.dropdown_content').css('display', 'none');
         });
     }
     //绑定[送至]快捷按钮事件
