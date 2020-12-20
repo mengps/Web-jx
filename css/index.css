@@ -97,7 +97,7 @@ div.item_long {
      position: relative;
  }
 
-.header img {
+.header img.title {
     position: absolute;
     left: 0px;
     height: 100px;
@@ -110,6 +110,7 @@ div.item_long {
 }
 
 .header .search .editor {
+    position: relative;
     margin: 0px auto;
     width: 550px;
     height: 36px;
@@ -118,12 +119,42 @@ div.item_long {
 
 .header .search .editor input {
     margin-left: 20px;
-    width: 400px;
+    width: 450px;
     height: 36px;
     line-height: 36px;
     font-size: 0.9rem;
     font-family: Microsoft YaHei;
 }
+
+.header .search .editor img.carmera {
+    position: absolute;
+    right: 100px;
+    height: 36px;
+    right: 30px;
+}
+
+.header .search .editor .search_button {
+    position: absolute;
+    height: 36px;
+    width: 60px;
+    top: 0px;
+    right: 0px;
+    background-color: red;
+}
+
+header .search .editor .search_button:hover {
+    cursor: pointer;
+    background-color: #b40606;
+}
+
+.header .search .editor .search_button img {
+    display: block;
+    height: 36px;
+    width: 36px;
+    color: white;
+    margin: 0px auto;
+}
+
 
 .header .hotwords {
     margin: 10px auto 0px;
