@@ -145,3 +145,17 @@ s, i, em {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.unselectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selectable {
+    -moz-user-select: all;
+    -webkit-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}

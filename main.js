@@ -59,6 +59,46 @@ $(document).ready(() => {
         dropDownButtons[0].firstChild.textContent = '送至：' + this.textContent;
     });
 
+    //搜索栏事件绑定
+    let words = ['车主福利', '24期免息', '工具', '宠物生活', '手机好礼', '使命召唤', '体检医美', '抢神券'];
+    let hottest = ['手机圣诞节', '小哥优选季', '工业年末庆'];
+    let randomWords = ['行车记录仪', '保温杯', '格兰仕 微波炉'];
+    let header = $('.header');
+    let searchEditor = header.find('.search .editor');
+    let searchRandom = searchEditor.children('.random');
+    let searchInput = searchEditor.children('input');
+    let hotwordsAnchor = header.find('.search .hotwords a');
+    searchRandom.on('click', () => searchInput.focus());
+    searchInput.on('focus', () => searchRandom.addClass('active'));
+    searchInput.on('input', function() {
+        if (searchInput.val()) {
+            searchRandom.addClass('input');
+        } else {
+            searchRandom.removeClass('input');
+        }
+    });
+    searchInput.on('blur', () => searchRandom.removeClass('active').removeClass('input'));
+    let searchButton = searchEditor.children('.search_button');
+    searchButton.on('click', () => {
+        if (searchInput.val()) {
+            console.log('search goods: ' + searchInput.val());
+        } else {
+            console.log('search goods: ' + searchRandom.text());
+        }
+    });
+    let updateWords = () => {
+        searchRandom.text(randomWords[parseInt(Math.random() * 3)]);
+        $(hotwordsAnchor[0]).text(hottest[parseInt(Math.random() * 3)]);
+    };
+    updateWords();
+    setInterval(updateWords, 4000);
+    for (let i in [...hotwordsAnchor]) {
+        if (i != 0) $(hotwordsAnchor[i]).text(words[i - 1]);
+    }
+
+    //历史搜索记录
+    let searchHistory = header.find('.search .history');
+
     //导航事件绑定
     let navigation = document.getElementsByClassName('nav')[0];
 
@@ -198,7 +238,7 @@ $(document).ready(() => {
     }
 
     //限时秒杀最右侧轮播
-    let seckillCarouselList = seckill.find('.carousel ul.images');
+    let seckillCarouselList = seckill.find('.carousel .images');
     let imageUrls = [];
     let seckillCarouselRandom = () => {
         imageUrls.length = 0;
@@ -230,7 +270,7 @@ $(document).ready(() => {
                 left.addClass('current');
                 right.removeClass('current');
             }
-        }, 2000);
+        }, 4000);
     }
     runSeckillCarousel();
 
