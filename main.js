@@ -68,16 +68,31 @@ $(document).ready(() => {
     let searchRandom = searchEditor.children('.random');
     let searchInput = searchEditor.children('input');
     let hotwordsAnchor = header.find('.search .hotwords a');
+    let searchHistory = header.find('.search .history');
+    searchHistory.on('mouseover', () => searchHistory.opened = false);
+    searchHistory.on('mouseleave', () => searchHistory.opened = true);
     searchRandom.on('click', () => searchInput.focus());
-    searchInput.on('focus', () => searchRandom.addClass('active'));
-    searchInput.on('input', function() {
+    searchInput.on('click', () => searchInput.focus());
+    searchInput.on('focus', () => {
+        searchRandom.addClass('active');
+        searchHistory.opened = true;
+        searchHistory.show();
+    });
+    searchInput.on('input', () => {
         if (searchInput.val()) {
             searchRandom.addClass('input');
         } else {
             searchRandom.removeClass('input');
         }
     });
-    searchInput.on('blur', () => searchRandom.removeClass('active').removeClass('input'));
+    searchInput.on('blur', () => {
+        if (!searchInput.val())
+            searchRandom.removeClass('active').removeClass('input');
+        if (searchHistory.opened) {
+            searchHistory.opened = false;
+            searchHistory.hide();
+        }
+    });
     let searchButton = searchEditor.children('.search_button');
     searchButton.on('click', () => {
         if (searchInput.val()) {
@@ -93,14 +108,33 @@ $(document).ready(() => {
     updateWords();
     setInterval(updateWords, 4000);
     for (let i in [...hotwordsAnchor]) {
-        if (i != 0) $(hotwordsAnchor[i]).text(words[i - 1]);
+        if (i !== 0) $(hotwordsAnchor[i]).text(words[i - 1]);
     }
 
-    //历史搜索记录
-    let searchHistory = header.find('.search .history');
+    //手动添加历史搜索记录
+    for (let i = 0; i < 8; i++) {
+        let li = $(document.createElement('li'));
+        let removeButton = $(document.createElement('button'));
+        removeButton.text('删除');
+        removeButton.on('click', () => {
+            li.remove();
+            //需要重新激活input
+            searchInput.focus();
+        });
+        li.addClass('history_item');
+        li.text(`${i + ' item'}`);
+        li.on('click', () => {
+            searchRandom.addClass('input');
+            searchInput.val(li[0].childNodes[0].nodeValue);
+            searchHistory.opened = false;
+            searchHistory.hide();
+        });
+        li.append(removeButton);
+        searchHistory.append(li);
+    }
 
     //导航事件绑定
-    let navigation = document.getElementsByClassName('nav')[0];
+    let navigation = document.getElementsByTagName('nav')[0];
 
     //中间轮播图事件绑定
     let playing = false;

@@ -123,6 +123,7 @@ div.item_long {
     margin-left: 20px;
     height: 36px;
     line-height: 36px;
+    color: #999;
 }
 
 .header .search .editor .random.active {
@@ -190,10 +191,41 @@ div.item_long {
 }
 
 .header .history {
+    z-index: 10;
     position: absolute;
-    width: 550px;
+    display: none;
+    top: 62px;
+    border: 1px solid #666;
+    box-shadow: 10px 10px 10px #666;
     background-color: #fff;
 }
+
+.header .history .history_item {
+    position: relative;
+    width: 540px;
+    text-align: left;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.header .history .history_item:hover {
+    background-color: #ccc;
+}
+
+.header .history .history_item>button {
+    position: absolute;
+    border-radius: 4px;
+    width: 50px;
+    right: 10px;
+    cursor: pointer;
+    color: #444;
+    background-color: #eee;
+}
+
+.header .history .history_item>button:hover {
+    background-color: #ff8282;
+}
+
 
 /**
  * 导航区域
@@ -765,4 +797,59 @@ div.seckill .playbill .countdown_time>.time {
 
 .seckill .carousel .index .right {
     right: 108px;
+}
+
+
+/**
+ * 电梯
+ */
+.seckill .elevator {
+    width: 60px;
+    margin-left: 20px;
+    background-color: #fff;
+}
+
+.seckill .elevator a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 70px;
+    font-size: 0.9rem;
+}
+
+.seckill .elevator a:hover {
+    color: white;
+    background-color: red;
+}
+
+.seckill .elevator a:nth-child(-n+5):after {
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    height: 1px;
+    left: 0px;
+    bottom: 0px;
+    background-image: linear-gradient(to right, white, red, white);
+}
+
+.seckill .elevator a .text {
+    display: inline-block;
+    position: relative;
+    max-width: 32px;
+    line-height: 18px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.seckill .elevator a img {
+    position: relative;
+    height: 30%;
+    margin: 14px 0px 2px;
+}
+
+.seckill .elevator a .othter {
+    position: relative;
+    width: 100%;
+    text-align: center;
 }
