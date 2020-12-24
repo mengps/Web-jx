@@ -29,7 +29,7 @@ li.seperator {
  */
 .w {
     width: 1420px;
-    margin: auto;
+    margin: 0px auto;
 }
 
 .dropdown_button {
@@ -232,13 +232,12 @@ div.item_long {
  */
 nav {
     width: 100%;
-    float: left;
+    margin-top: 10px;
     background-color: #f0f1f2;
 }
 
 nav .classicfication {
     width: fit-content;
-    margin: 10px 0px;
     padding: 20px 0px;
     background-color: #fff;
 }
@@ -259,7 +258,7 @@ nav .classicfication>li:hover {
  */
 nav .carousel {
     position: relative;
-    margin: 10px 10px;
+    margin: 0px 10px;
     width: 800px;
     height: 544px;
     background-color: white;
@@ -319,7 +318,6 @@ nav .carousel .index>li.current {
 nav .carousel_right {
     position: relative;
     width: 190px;
-    margin: 10px 0px;
     background-color: #fff;
 }
 
@@ -343,13 +341,13 @@ nav .carousel_right li img {
 
 
 /**
- * 其他
+ * 其他区域
  */
 nav .other {
     position: relative;
     width: 190px;
     height: 544px;
-    margin: 10px 0px 10px 10px;
+    margin: 0px 0px 0px 10px;
     background-color: #fff;
 }
 
@@ -518,6 +516,12 @@ nav .other .quick_life .tab {
     cursor: pointer;
 }
 
+nav .other .quick_life .tab a {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+}
+
 nav .other .quick_life .tab>div {
     display: none;
     width: 70%;
@@ -531,7 +535,7 @@ nav .other .quick_life .tab>div.current {
     display: block;    
 }
 
-nav .other .quick_life div.content {
+nav .other .quick_life .tab_view .content {
     display: none;
     width: 190px;
     height: 230px;
@@ -539,26 +543,30 @@ nav .other .quick_life div.content {
     text-align: center;
 }
 
-nav .other .quick_life div.current {
+nav .other .quick_life .tab_view .content.current {
     display: block;
 }
 
 /**
  * 限时秒杀倒计时部分
  */
-div.seckill {
+.seckill {
     margin-top: 20px;
     width: 100%;
-    float: left;
+    background-color: #f0f1f2;
 }
 
-div.seckill .playbill {
+.seckill .w {
+    position: relative;
+}
+
+.seckill .playbill {
     width: 190px;
     height: 260px;
     background-image: url(../images/seckill/lightning.png);
 }
 
-div.seckill .playbill>.title {
+.seckill .playbill>.title {
     float: left;
     margin-top: 32px;
     width: 100%;
@@ -568,7 +576,7 @@ div.seckill .playbill>.title {
     color: white;
 }
 
-div.seckill .playbill .countdown_time {
+.seckill .playbill .countdown_time {
     float: left;
     position: relative;
     margin-top: 80px;
@@ -576,7 +584,7 @@ div.seckill .playbill .countdown_time {
     color: white;
 }
 
-div.seckill .playbill .countdown_time>.time {
+.seckill .playbill .countdown_time>.time {
     font-weight: 900;
     margin-right: 4px;
 }
@@ -804,8 +812,11 @@ div.seckill .playbill .countdown_time>.time {
  * 电梯
  */
 .seckill .elevator {
+    position: absolute;
+    z-index: 2;
     width: 60px;
-    margin-left: 20px;
+    top: 0px;
+    right: -80px;
     background-color: #fff;
 }
 
@@ -852,4 +863,160 @@ div.seckill .playbill .countdown_time>.time {
     position: relative;
     width: 100%;
     text-align: center;
+}
+
+/*
+ * 精选区域
+ */
+.feature {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.feature .container {
+    position: relative;
+    float: left;
+    height: 400px;
+    width: 705px;
+    background-color: #fff;
+}
+
+.feature .container:first-child {
+    margin-right: 10px;
+}
+
+.feature .container .title {
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    height: 40px;
+    top: 10px;
+    line-height: 40px;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.feature .container .button {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 1px solid red;
+    border-radius: 9px;
+    color: red;
+    background-color: white;
+}
+
+.feature .container .tab_view {
+    position: absolute;
+    width: 100%;
+    height: 390px;
+    top: 10px;
+    background-color: white;
+    transition: top 200ms linear;
+}
+
+.feature .container .tab_view.show {
+    top: 0px;
+    transition: top 200ms linear;
+}
+
+.feature .container .tab {
+    float: left;
+    width: 64px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.feature .container .tab a {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+}
+
+.feature .container .tab>div {
+    display: none;
+    width: 70%;
+    height: 2px;
+    margin: 0px auto;
+    background-color: red;
+    background-image: linear-gradient(to right, white 0%, red 50%, white 100%);
+}
+
+.feature .container .tab>div.current {
+    display: block;    
+}
+
+.feature .container .tab_view .content {
+    display: none;
+    width: 100%;
+    height: 360px;
+    text-align: center;
+}
+
+.feature .container .tab_view .content.current {
+    display: block;
+}
+
+.feature .container .tab_view .content .card {
+    position: relative;
+    width: 220px;
+    height: 170px;
+    margin: 10px 10px 0px 0px;
+    background-color: #F8F7F6;
+}
+
+.feature .container .tab_view .content .card:first-child{
+    width: 30%;
+    height: 330px;
+    margin: 15px;
+}
+
+.feature .container .tab_view .content .card img {
+    margin-top: 30px;
+    max-width: 80%;
+    max-height: 60%;
+}
+
+.feature .container .tab_view .content .card .time {
+    width: 40%;
+    font-size: 0.9rem;
+    height: 28px;
+    line-height: 28px;
+    color: white;
+    font-weight: bold;
+    background-color: #F7A400;
+}
+
+.feature .container .tab_view .content .card .desc {
+    font-size: 0.9rem;
+    height: 30px;
+    line-height: 30px;
+}
+
+.feature .container .tab_view .content .card .price{
+    position: absolute;
+} 
+
+.feature .container .tab_view .content .card .new {
+    font-size: 1.1rem;
+    color: red;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.feature .container .tab_view .content .card .old {
+    font-size: 0.7rem;
+    padding-top: 4px;
+    text-decoration: line-through;
 }

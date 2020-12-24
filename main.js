@@ -1,3 +1,5 @@
+import { HistoryDB } from './historydb.js'
+
 function randomColor(min = 0, max = 255) {
     min = Math.max(0, min);
     max = Math.min(255, max);
@@ -122,7 +124,7 @@ $(document).ready(() => {
             searchInput.focus();
         });
         li.addClass('history_item');
-        li.text(`${i + ' item'}`);
+        li.text(`${i} item`);
         li.on('click', () => {
             searchRandom.addClass('input');
             searchInput.val(li[0].childNodes[0].nodeValue);
@@ -285,7 +287,7 @@ $(document).ready(() => {
         seckillCarouselList.find('img').each(function(index) {
             $(this).attr('src', imageUrls[index % 2]);
         });
-        let width = seckill.find('.carousel')[0].offsetWidth;
+        let width = seckill.find('.carousel')[0].offsetWidth || -240;
         let offset = -width;
         let index = seckill.find('.carousel ul.index');
         let left = index.children('.left');
@@ -320,4 +322,12 @@ $(document).ready(() => {
             seckillCarouselRandom();
         }
     }, 1000);
+
+    //特选部分
+    let feature = $('.feature');
+    feature.find('.container .title').hover(
+        function() { $(this).children('.button').css({ color: 'white', backgroundColor: 'red' }); },
+        function() { $(this).children('.button').css({ color: 'red', backgroundColor: 'white' }); }
+    );
+    addTabViewEvent(feature.find('.container .tab_view'));
 });

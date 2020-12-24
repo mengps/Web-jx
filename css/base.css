@@ -137,13 +137,20 @@ s, i, em {
     text-align: right
 }
 
-.hide {
-    display: none
-}
-
 .hcenter {
     left: 50%;
     transform: translateX(-50%);
+}
+
+.vcenter {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .unselectable {
@@ -158,4 +165,10 @@ s, i, em {
     -webkit-user-select: all;
     -ms-user-select: all;
     user-select: all;
+}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
