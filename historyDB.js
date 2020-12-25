@@ -1,5 +1,4 @@
-class HistoryDB 
-{
+class HistoryDB {
     open = false;
     indexedDB;
     count = 0;

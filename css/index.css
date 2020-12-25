@@ -887,6 +887,7 @@ nav .other .quick_life .tab_view .content.current {
 }
 
 .feature .container .title {
+    z-index: 1;
     position: relative;
     display: inline-block;
     width: 130px;
@@ -961,7 +962,6 @@ nav .other .quick_life .tab_view .content.current {
     display: none;
     width: 100%;
     height: 360px;
-    text-align: center;
 }
 
 .feature .container .tab_view .content.current {
@@ -970,19 +970,22 @@ nav .other .quick_life .tab_view .content.current {
 
 .feature .container .tab_view .content .card {
     position: relative;
+    width: 30%;
+    height: 330px;
+    margin: 15px;
+    background-color: #F8F7F6;
+}
+
+.feature .container .tab_view .content .card_small {
+    position: relative;
     width: 220px;
     height: 170px;
     margin: 10px 10px 0px 0px;
     background-color: #F8F7F6;
 }
 
-.feature .container .tab_view .content .card:first-child{
-    width: 30%;
-    height: 330px;
-    margin: 15px;
-}
-
 .feature .container .tab_view .content .card img {
+    position: relative;
     margin-top: 30px;
     max-width: 80%;
     max-height: 60%;
@@ -990,22 +993,26 @@ nav .other .quick_life .tab_view .content.current {
 
 .feature .container .tab_view .content .card .time {
     width: 40%;
-    font-size: 0.9rem;
     height: 28px;
     line-height: 28px;
     color: white;
     font-weight: bold;
+    font-size: 0.9rem;
     background-color: #F7A400;
 }
 
 .feature .container .tab_view .content .card .desc {
+    display: inline-block;
     font-size: 0.9rem;
+    width: 90%;
     height: 30px;
     line-height: 30px;
+    padding: 0px 5%;
+    text-align: center;
 }
 
-.feature .container .tab_view .content .card .price{
-    position: absolute;
+.feature .container .tab_view .content .card .price {
+    position: relative;
 } 
 
 .feature .container .tab_view .content .card .new {
@@ -1017,6 +1024,75 @@ nav .other .quick_life .tab_view .content.current {
 
 .feature .container .tab_view .content .card .old {
     font-size: 0.7rem;
-    padding-top: 4px;
+    padding-top: 6px;
     text-decoration: line-through;
+}
+
+/* 小卡片 */ 
+.feature .container .tab_view .content .card_small img {
+    max-width: 50%;
+    max-height: 60%;
+    margin-top: 12%;
+    margin-left: 5%;
+}
+
+.feature .container .tab_view .content .card_small .time {
+    position: absolute;
+    top: 70%;
+    left: 5%;
+    width: 40%;
+    height: 16px;
+    line-height: 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;;
+    background-color: #666;
+    text-align: center;
+}
+
+.feature .container .tab_view .content .card_small .desc {
+    display: inline-block;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    margin-top: 30px;
+    padding-left: 2%;
+    width: 43%;
+    height: 32px;
+    line-height: 16px;
+    font-size: 0.9rem;
+}
+
+.feature .container .tab_view .content .card_small .price {
+    display: inline-block;
+    padding-left: 2%;
+    width: 43%;
+    margin-top: 10px;
+} 
+
+.feature .container .tab_view .content .card_small .new {
+    display: inline-block;
+    width: 100%;
+    font-size: 1.1rem;
+    color: red;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.feature .container .tab_view .content .card_small .old {
+    font-size: 0.7rem;
+    padding-left: 4px;
+    text-decoration: line-through;
+}
+
+.feature .container .tab_view .content .card_small .sold_msg {
+    display: inline-block;
+    padding-left: 2%;
+    width: 43%;
+    margin-top: 10px;
+}
+
+.feature .container .tab_view .content .card_small .sold_number {
+    display: inline-block;
+    color: red;
 }

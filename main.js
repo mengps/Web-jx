@@ -1,22 +1,6 @@
+import { Tool } from './tools.js'
 import { HistoryDB } from './historydb.js'
-
-function randomColor(min = 0, max = 255) {
-    min = Math.max(0, min);
-    max = Math.min(255, max);
-    let random = () => parseInt(Math.random() * (max - min) + min);
-    return 'rgb(' + random() + ',' + random() + ',' + random() + ')';
-}
-
-function getOffsetLeft(element, end = { endKey : 'tagName', endName : 'BODY' }) {
-    let endKey = end.endKey, endName = end.endName;
-    let recursion = (element) => {
-        if (element !== null && element[endKey] !== endName) {
-            return element.offsetLeft + recursion(element.parentNode);
-        } else return 0;
-    }
-
-    return recursion(element);
-}
+import { FeatureCardContent, FeatureCardData } from './feature.js'
 
 function adjustDropDownContentPostion(content) {
     let w = $('.w')[0];
@@ -43,8 +27,8 @@ function addTabViewEvent(tabView) {
     })
 }
 
-$(document).ready(() => {
-    //快捷栏事件绑定
+function initShortcutBlock() {
+    //快捷栏部分
     let dropDownButtons = document.getElementsByClassName('dropdown_button');
     for (let button of dropDownButtons) {
         $(button).on('mouseenter', () => {
@@ -60,7 +44,10 @@ $(document).ready(() => {
     $(dropDownButtons[0]).find('.item a').on('click', function() {
         dropDownButtons[0].firstChild.textContent = '送至：' + this.textContent;
     });
+}
 
+function initHeaderBlock() {
+    //头部
     //搜索栏事件绑定
     let words = ['车主福利', '24期免息', '工具', '宠物生活', '手机好礼', '使命召唤', '体检医美', '抢神券'];
     let hottest = ['手机圣诞节', '小哥优选季', '工业年末庆'];
@@ -134,10 +121,10 @@ $(document).ready(() => {
         li.append(removeButton);
         searchHistory.append(li);
     }
+}
 
-    //导航事件绑定
-    let navigation = document.getElementsByTagName('nav')[0];
-
+function initNavBlock() {
+    //导航部分
     //中间轮播图事件绑定
     let playing = false;
     let currentIndex = 0;
@@ -185,7 +172,7 @@ $(document).ready(() => {
         let images = carouselRight.find('img');
         let list = carouselRight.find('li');
         list.each(function() {
-            $(this).css('background-color', randomColor(128, 255));
+            $(this).css('background-color', Tool.randomColor(128, 255));
         })
         images.each(function() {
             $(this).attr('src', 'images/carousel_right/' + Math.floor(Math.random() * 9) + '.webp');
@@ -221,7 +208,9 @@ $(document).ready(() => {
             tabView.removeClass('show');
         }
     });
+}
 
+function initSeckillBlock() {
     //限时秒杀部分
     let seckill = $('div.seckill');
     let seckillTime = seckill.find('p.time');
@@ -322,7 +311,9 @@ $(document).ready(() => {
             seckillCarouselRandom();
         }
     }, 1000);
+}
 
+function initFeatureBlock() {
     //特选部分
     let feature = $('.feature');
     feature.find('.container .title').hover(
@@ -330,4 +321,32 @@ $(document).ready(() => {
         function() { $(this).children('.button').css({ color: 'red', backgroundColor: 'white' }); }
     );
     addTabViewEvent(feature.find('.container .tab_view'));
+    //填充精选部分
+    let content = feature.find('.container .tab_view .content');
+    let contentCount = content.length;
+    let contentDatas = [];
+    for (let i = 0; i < contentCount; i++) {
+        contentDatas.push(
+            new FeatureCardData('#', parseInt(Math.random() * 199 + 1)
+                                , 'images/seckill/' + Math.floor(Math.random() * 9) + '.gif'
+                                , '喜之郎智热火锅~', 19.9, 10.9, 
+                                parseInt(Math.random() * 2000))
+        )
+    }
+    content.each(function() {
+        let $this = $(this);
+        let data = contentDatas[$this.index() - 1];
+        $this.append(FeatureCardContent.createCard(data));
+        for (let i = 0; i < 4; i++) {
+            $this.append(FeatureCardContent.createSmallCard(data));
+        }
+    });
+}
+
+$(document).ready(() => {
+    initShortcutBlock();
+    initHeaderBlock();
+    initNavBlock();
+    initSeckillBlock();
+    initFeatureBlock();
 });
