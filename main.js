@@ -341,6 +341,24 @@ function initFeatureBlock() {
             $this.append(FeatureCardContent.createSmallCard(data));
         }
     });
+    
+    let flashSale = feature.find('.container:last-child');
+    flashSale.find('.card_right_small').each(function() {
+        let anchor = $(
+            `<a href="#">
+                <img src="${'images/seckill/' + Math.floor(Math.random() * 9) + '.gif'}"/>
+                <p>这是商品描述~</p>
+            </a>`);
+        $(this).append(anchor);
+    })
+}
+
+function initNiceGoodsBlock() {
+    let niceGoods = $('.nice_goods');
+    niceGoods.find('.logo').hover(
+        function() { $(this).find('.button').css({ borderColor: 'red', backgroundColor: 'red' }); },
+        function() { $(this).find('.button').css({ borderColor: 'white', backgroundColor: 'transparent' }); }
+    );
 }
 
 $(document).ready(() => {
@@ -349,4 +367,5 @@ $(document).ready(() => {
     initNavBlock();
     initSeckillBlock();
     initFeatureBlock();
+    initNiceGoodsBlock();
 });

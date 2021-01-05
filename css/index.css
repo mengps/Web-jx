@@ -369,7 +369,7 @@ nav .other .vip div.head_img {
     margin-left: 15px;
     width: 60px;
     height: 60px;
-    border-radius: 30px;
+    border-radius: 31px;
     border: 2px solid #eee;
     background-color: #fff;
     background-size: cover;
@@ -892,12 +892,12 @@ nav .other .quick_life .tab_view .content.current {
     display: inline-block;
     width: 130px;
     height: 40px;
-    top: 10px;
     line-height: 40px;
+    margin-top: 10px;
+    margin-left: 20px;
     color: black;
     font-size: 1.5rem;
     font-weight: bold;
-    margin-left: 20px;
 }
 
 .feature .container .button {
@@ -979,7 +979,7 @@ nav .other .quick_life .tab_view .content.current {
 .feature .container .tab_view .content .card_small {
     position: relative;
     width: 220px;
-    height: 170px;
+    height: 165px;
     margin: 10px 10px 0px 0px;
     background-color: #F8F7F6;
 }
@@ -1095,4 +1095,114 @@ nav .other .quick_life .tab_view .content.current {
 .feature .container .tab_view .content .card_small .sold_number {
     display: inline-block;
     color: red;
+}
+
+.feature .container:last-child .title {
+    display: block;
+}
+
+.feature .container .card_right {
+    width: 40%;
+    height: 320px;
+    margin: 15px;
+    margin-right: 0px;
+    background-color: #F8F7F6;
+}
+
+.feature .container .card_right .brand {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.feature .container .card_right .desc {
+    margin-top: 15px;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.feature .container .card_right .discount {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.feature .container .card_right img {
+    position: relative;
+    margin-top: 10px;
+    width: auto;
+    height: 60%;
+}
+
+.feature .container .seperator {
+    width: 1px;
+    height: 85px;
+    margin: 10=px 4px 10px 4px;
+    background-image: linear-gradient(to bottom, white 0%, red 50%, white 100%);
+}
+
+.feature .container .card_right_small {
+    width: 24%;
+    height: 104px;
+    margin: 0px 15px 15px;
+    background-color: #F8F7F6;
+}
+
+.feature .container .card_right_small img {
+    display: block;
+    margin: 5px auto 5px auto;
+    width: auto;
+    height: 70%;
+}
+
+.feature .container .card_right_small p {
+    text-align: center;
+}
+
+/**
+ * 好货部分
+ */
+.nice_goods {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #f0f1f2;
+}
+
+.nice_goods .logo {
+    position: relative;
+    display: inline-block;
+    width: 190px;
+    height: 260px;
+    background-image: url(../images/nice_goods/background.png);
+}
+
+.nice_goods .logo .title {
+    position: absolute;
+    width: 160px;
+    height: 90px;
+    top: 20px;
+    background-image: url(../images/nice_goods/title.png);
+}
+
+.nice_goods .logo .title .desc {
+    margin-left: 20px;
+    margin-top: 55px;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
+.nice_goods .logo .title .button {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    margin-top: 57px;
+    line-height: 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 9px;
+    color: white;
+    background-color: transparent;
 }
