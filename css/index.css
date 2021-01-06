@@ -1160,7 +1160,7 @@ nav .other .quick_life .tab_view .content.current {
 }
 
 /**
- * 好货部分
+ * 好货区域
  */
 .nice_goods {
     margin-top: 20px;
@@ -1205,4 +1205,41 @@ nav .other .quick_life .tab_view .content.current {
     border-radius: 9px;
     color: white;
     background-color: transparent;
+}
+
+.nice_goods .goods_recommends {
+    overflow: hidden;
+    margin-left: 10px;
+    /* - logo width - margin-left */
+    width: calc(100% - 190px - 10px);
+    height: 260px;
+    background-color: #ddd;
+}
+
+.nice_goods .goods_recommends .goods_list {
+    position: relative;
+    width: 200%;
+    height: 100%;
+}
+
+.nice_goods .goods_recommends .goods_list .goods {
+    display: inline-block;
+    width: 244px;
+    height: 100%;
+}
+
+.nice_goods .goods_recommends .goods_list .goods>img {
+    display: block;
+    margin: auto;
+    width: auto;
+    height: 80%;
+}
+
+.nice_goods .goods_recommends .goods_list .goods>P {
+    margin: 10px 0px;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 1rem;
 }

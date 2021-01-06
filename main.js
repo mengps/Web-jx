@@ -276,13 +276,13 @@ function initSeckillBlock() {
         seckillCarouselList.find('img').each(function(index) {
             $(this).attr('src', imageUrls[index % 2]);
         });
-        let width = seckill.find('.carousel')[0].offsetWidth || -240;
-        let offset = -width;
+        let width = seckill.find('.carousel')[0].offsetWidth || 240;
+        let offset = -width + 'px';
         let index = seckill.find('.carousel ul.index');
         let left = index.children('.left');
         let right = index.children('.right');
         setInterval(() => {
-            seckillCarouselList.animate({ left: offset + 'px' }, 800, 'linear', () => {
+            seckillCarouselList.animate({ left: offset }, 800, 'linear', () => {
                 if ((offset -= width) === -width * 3){
                     seckillCarouselList.css('left', '0px');
                     offset = -width;
@@ -346,9 +346,10 @@ function initFeatureBlock() {
     flashSale.find('.card_right_small').each(function() {
         let anchor = $(
             `<a href="#">
-                <img src="${'images/seckill/' + Math.floor(Math.random() * 9) + '.gif'}"/>
+                <img src="images/seckill/${Math.floor(Math.random() * 9)}.gif"/>
                 <p>这是商品描述~</p>
-            </a>`);
+            </a>`
+        );
         $(this).append(anchor);
     })
 }
@@ -359,6 +360,43 @@ function initNiceGoodsBlock() {
         function() { $(this).find('.button').css({ borderColor: 'red', backgroundColor: 'red' }); },
         function() { $(this).find('.button').css({ borderColor: 'white', backgroundColor: 'transparent' }); }
     );
+
+    //初始化商品列表
+    let goodsRecommends = niceGoods.find('.goods_recommends');
+    let goodsList = goodsRecommends.find('.goods_list');
+    for (let i = 0; i < 5; i++) {
+        let goods;
+        if (i & 0x01) {
+            goods = $(
+                `<a class="goods fl">
+                    <p>iphone ${parseInt(Math.random() * 100)} plus 现货！！</p>
+                    <img src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                </a>`
+            );
+        } else {
+            goods = $(
+                `<a class="goods fl">
+                    <img src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                    <p>iphone ${parseInt(Math.random() * 100)} plus 现货！！</p>
+                </a>`
+            );
+        }
+        goodsList.append(goods);
+    }
+    //复制一轮
+    goodsList.append(goodsList.find('.goods').clone());
+
+    //滚动播放
+    let width = goodsRecommends[0].offsetWidth || 1220;
+    let scrollAnimation = () => {
+        let time = (1.0 - parseFloat(goodsList.css('left')) / -width) * 10000 || 10000;
+        goodsList.animate({ left: -width + 'px' }, time, 'linear', () => {
+            goodsList.css('left', '0px');
+            scrollAnimation();
+        });
+    };
+    scrollAnimation();
+    goodsRecommends.hover(() => goodsList.stop(), scrollAnimation);
 }
 
 $(document).ready(() => {
