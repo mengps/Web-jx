@@ -1208,6 +1208,7 @@ nav .other .quick_life .tab_view .content.current {
 }
 
 .nice_goods .goods_recommends {
+    position: relative;
     overflow: hidden;
     margin-left: 10px;
     /* - logo width - margin-left */
@@ -1242,4 +1243,28 @@ nav .other .quick_life .tab_view .content.current {
     line-height: 24px;
     text-align: center;
     font-size: 1rem;
+}
+
+.nice_goods .goods_recommends .scroll_bar {
+    display: none;
+    position: absolute;
+    margin: 0px 20px;
+    width: 1180px;
+    height: 2px;
+    bottom: 10px;
+    background-color: #66666644;
+    border-radius: 5px;
+}
+
+.nice_goods .goods_recommends .thumb {
+    position: absolute;
+    top: -4px;
+    height: 8px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: #aaa;
+}
+
+.nice_goods .goods_recommends .thumb:hover {
+    background-color: #666;
 }

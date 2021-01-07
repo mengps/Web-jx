@@ -387,6 +387,70 @@ function initNiceGoodsBlock() {
     goodsList.append(goodsList.find('.goods').clone());
 
     //滚动播放
+    class ScrollBar {
+        constructor(target) {
+            this.target = target;
+            this.scrollBar = goodsRecommends.find('.scroll_bar');
+            this.scrollThumb = this.scrollBar.children('.thumb');
+            this.scrollBarWidth = parseFloat(this.scrollBar.css('width'));
+            this.scrollThumbWidth = parseFloat(this.scrollThumb.css('width'));
+            this.scrollThumb.on('mousemove', this.move.bind(this));
+            this.scrollThumb.on('mouseup', this.up.bind(this));
+            this.scrollThumb.on('mousedown', this.down.bind(this));
+        }
+
+        show() {
+            this.scrollBar.show();
+        }
+
+        hide() {
+            this.scrollBar.hide();
+        }
+
+        /**
+         * @param {MouseEvent} event 
+         */
+        move(event) {
+            if (this.pressed) {
+                let x = event.pageX - this.startX;
+                let right = this.scrollBarWidth - this.scrollThumbWidth;
+                if (x >= 0 || x <= right) {
+                    this.scrollRatio = x / right;
+                    this.scrollThumb.css('left', x + 'px');
+                    console.log('move', event.pageX, this.startX);
+                }
+            }
+        }
+
+        up(event) {
+            this.pressed = false;
+        }
+
+        down(event) {
+            this.pressed = true;
+            this.startX = event.pageX;
+        }
+
+        /**
+         * @param {number} ratio 比率 [0.0 ~ 1.0]
+         */
+        set ratio(ratio) {
+            this.scrollRatio = ratio;
+            let left = (this.scrollBarWidth - this.scrollThumbWidth) * ratio + 'px';
+            this.scrollThumb.css('left', left);
+        }
+
+        pressed = false;
+        startX = 0;
+        scrollRatio = 0.0;
+        scrollBar;
+        scrollBarWidth;
+        scrollThumb;
+        scrollThumbWidth;
+        target;
+    };
+
+    let scrollBar = new ScrollBar(goodsList);
     let width = goodsRecommends[0].offsetWidth || 1220;
     let scrollAnimation = () => {
         let time = (1.0 - parseFloat(goodsList.css('left')) / -width) * 10000 || 10000;
@@ -396,7 +460,15 @@ function initNiceGoodsBlock() {
         });
     };
     scrollAnimation();
-    goodsRecommends.hover(() => goodsList.stop(), scrollAnimation);
+    goodsRecommends.hover(() => {
+        goodsList.stop();
+        scrollBar.ratio = Math.abs(parseFloat(goodsList.css('left')) / width);
+        scrollBar.show();
+    }, () => {
+        scrollAnimation();
+        scrollBar.hide();
+    });
+
 }
 
 $(document).ready(() => {
