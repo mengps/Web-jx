@@ -809,7 +809,7 @@ nav .other .quick_life .tab_view .content.current {
 
 
 /**
- * 电梯
+ * 电梯区域
  */
 .seckill .elevator {
     position: absolute;
@@ -826,11 +826,13 @@ nav .other .quick_life .tab_view .content.current {
     width: 100%;
     height: 70px;
     font-size: 0.9rem;
+    transition: background-color 200ms linear;
 }
 
 .seckill .elevator a:hover {
     color: white;
     background-color: red;
+    transition: background-color 200ms linear;
 }
 
 .seckill .elevator a:nth-child(-n+5):after {
@@ -912,7 +914,7 @@ nav .other .quick_life .tab_view .content.current {
     border: 1px solid red;
     border-radius: 9px;
     color: red;
-    background-color: white;
+    background-color: transparent;
 }
 
 .feature .container .tab_view {
@@ -1258,13 +1260,112 @@ nav .other .quick_life .tab_view .content.current {
 
 .nice_goods .goods_recommends .thumb {
     position: absolute;
-    top: -4px;
-    height: 8px;
-    width: 100px;
-    border-radius: 4px;
+    top: -5px;
+    height: 10px;
+    width: 120px;
+    border-radius: 5px;
     background-color: #aaa;
 }
 
 .nice_goods .goods_recommends .thumb:hover {
     background-color: #666;
+    cursor: pointer;
+}
+
+/**
+ * 看看更多区域
+ */
+
+ .see_more {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.see_more .card {
+    float: left;
+    width: 347.5px;
+    height: 350px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.see_more .card:nth-child(-n+3) {
+    margin-right: 10px;
+}
+
+.see_more .card .title {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+
+.see_more .card .title .desc {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 20px;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.see_more .card .title .button {
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    line-height: 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 9px;
+    color: red;
+    background-color: transparent;
+}
+
+.see_more .card .slider_view {
+    display: block;
+    position: relative;
+    width: 300%;
+    height: 200px;
+    margin-left: -40px;
+    overflow: hidden;
+    background-color: skyblue;
+}
+
+.see_more .card .slider_view .item.inactive {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    transition: width 500ms linear, height 500ms linear;
+}
+
+.see_more .card .slider_view .item.active {
+    width: 187.5px;
+    height: 187.5px;
+    transition: width 500ms linear, height 500ms linear;
+}
+
+.see_more .card .slider_view .item .goods {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.see_more .card .slider_view .item .new {
+    display: none;
+    position: absolute;
+    width: 60px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    right: 20px;
+    color: white;
+    border-radius: 13px;
+    background-color: tomato;
 }

@@ -318,7 +318,7 @@ function initFeatureBlock() {
     let feature = $('.feature');
     feature.find('.container .title').hover(
         function() { $(this).children('.button').css({ color: 'white', backgroundColor: 'red' }); },
-        function() { $(this).children('.button').css({ color: 'red', backgroundColor: 'white' }); }
+        function() { $(this).children('.button').css({ color: 'red', backgroundColor: 'transparent' }); }
     );
     addTabViewEvent(feature.find('.container .tab_view'));
     //填充精选部分
@@ -388,8 +388,9 @@ function initNiceGoodsBlock() {
 
     //滚动播放
     class ScrollBar {
-        constructor(target) {
+        constructor(target, targetWidth) {
             this.target = target;
+            this.targetWidth = targetWidth;
             this.scrollBar = goodsRecommends.find('.scroll_bar');
             this.scrollThumb = this.scrollBar.children('.thumb');
             this.scrollBarWidth = parseFloat(this.scrollBar.css('width'));
@@ -397,6 +398,7 @@ function initNiceGoodsBlock() {
             this.scrollThumb.on('mousemove', this.move.bind(this));
             this.scrollThumb.on('mouseup', this.up.bind(this));
             this.scrollThumb.on('mousedown', this.down.bind(this));
+            this.scrollThumb.on('mouseleave', this.up.bind(this));
         }
 
         show() {
@@ -414,11 +416,8 @@ function initNiceGoodsBlock() {
             if (this.pressed) {
                 let x = event.pageX - this.startX;
                 let right = this.scrollBarWidth - this.scrollThumbWidth;
-                if (x >= 0 || x <= right) {
-                    this.scrollRatio = x / right;
-                    this.scrollThumb.css('left', x + 'px');
-                    console.log('move', event.pageX, this.startX);
-                }
+                this.ratio += x / right;
+                 this.startX += x;
             }
         }
 
@@ -432,12 +431,19 @@ function initNiceGoodsBlock() {
         }
 
         /**
+         * @brief 改变滑块位置的比率并控制 target 滚动
          * @param {number} ratio 比率 [0.0 ~ 1.0]
          */
         set ratio(ratio) {
+            ratio = ratio < 0.0 ? 0.0 : ratio > 1.0 ? 1.0 : ratio;
             this.scrollRatio = ratio;
             let left = (this.scrollBarWidth - this.scrollThumbWidth) * ratio + 'px';
             this.scrollThumb.css('left', left);
+            this.target.css('left', -this.targetWidth * ratio + 'px');
+        }
+
+        get ratio() {
+            return this.scrollRatio;
         }
 
         pressed = false;
@@ -448,12 +454,15 @@ function initNiceGoodsBlock() {
         scrollThumb;
         scrollThumbWidth;
         target;
+        targetWidth;
     };
 
-    let scrollBar = new ScrollBar(goodsList);
+    let scrollBar = new ScrollBar(goodsList, goodsRecommends[0].offsetWidth);
     let width = goodsRecommends[0].offsetWidth || 1220;
     let scrollAnimation = () => {
-        let time = (1.0 - parseFloat(goodsList.css('left')) / -width) * 10000 || 10000;
+        let goodsLeft = parseFloat(goodsList.css('left'));
+        if (goodsLeft === -width) goodsList.css('left', '0px');
+        let time = (1.0 - goodsLeft / -width) * 10000 || 10000;
         goodsList.animate({ left: -width + 'px' }, time, 'linear', () => {
             goodsList.css('left', '0px');
             scrollAnimation();
@@ -468,7 +477,42 @@ function initNiceGoodsBlock() {
         scrollAnimation();
         scrollBar.hide();
     });
+}
 
+function initSeeMoreBlock() {
+    let seeMore = $('.see_more');
+    seeMore.find('.card .title').hover(
+        function() { $(this).find('.button').css({ borderColor: 'red', backgroundColor: 'red', color: 'white' }); },
+        function() { $(this).find('.button').css({ borderColor: 'red', backgroundColor: 'transparent', color: 'red' }); }
+    );
+    
+    let sliderView = seeMore.find('.card .slider_view');
+    let itemWidth = 120;
+    let itemNum = 7;
+    for (let i = 0; i < itemNum; i++) {
+        let item = $(
+            `<div class="item vcenter fl inactive">
+                <img class="goods" src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                <div class="new">NEW</div>
+            </div>`);
+        sliderView.append(item);
+    }
+    sliderView.find('.item:nth-child(2)').addClass('active').find('.new').show();
+    let sliderAnimate = () => {
+        let centerItem = sliderView.find('.item:nth-child(3)');
+        let items = sliderView.find('.item');
+        items.find('.new').hide();
+        items.removeClass('active').addClass('inactive');
+        centerItem.addClass('active');
+        centerItem.find('.new').show();
+        sliderView.animate({ left: -itemWidth + 'px' }, 500, () => {
+            let firstItem = sliderView.find('.item:first-child');
+            let lastItem = sliderView.find('.item:last-child');
+            firstItem.insertAfter(lastItem);
+            sliderView.css('left', '0px');
+        });
+    }
+    setInterval(sliderAnimate, 3000);
 }
 
 $(document).ready(() => {
@@ -478,4 +522,5 @@ $(document).ready(() => {
     initSeckillBlock();
     initFeatureBlock();
     initNiceGoodsBlock();
+    initSeeMoreBlock();
 });
