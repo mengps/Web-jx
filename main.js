@@ -20,8 +20,8 @@ function addTabViewEvent(tabView) {
     let contents = tabView.children('.content');
     tabs.on('mouseover', function() {
         let $this = $(this);
-        tabs.children('div').removeClass('current');
-        $this.children('div').addClass('current');
+        tabs.find('div').removeClass('current');
+        $this.find('div').addClass('current');
         contents.removeClass('current');
         $(contents[$this.index()]).addClass('current');
     })
@@ -370,13 +370,13 @@ function initNiceGoodsBlock() {
             goods = $(
                 `<a class="goods fl">
                     <p>iphone ${parseInt(Math.random() * 100)} plus 现货！！</p>
-                    <img src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                    <img draggable="false" src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
                 </a>`
             );
         } else {
             goods = $(
                 `<a class="goods fl">
-                    <img src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                    <img draggable="false" src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
                     <p>iphone ${parseInt(Math.random() * 100)} plus 现货！！</p>
                 </a>`
             );
@@ -398,7 +398,8 @@ function initNiceGoodsBlock() {
             this.scrollThumb.on('mousemove', this.move.bind(this));
             this.scrollThumb.on('mouseup', this.up.bind(this));
             this.scrollThumb.on('mousedown', this.down.bind(this));
-            this.scrollThumb.on('mouseleave', this.up.bind(this));
+            window.addEventListener('mouseup', this.up.bind(this));
+            window.addEventListener('mousemove', this.move.bind(this));
         }
 
         show() {
@@ -417,12 +418,13 @@ function initNiceGoodsBlock() {
                 let x = event.pageX - this.startX;
                 let right = this.scrollBarWidth - this.scrollThumbWidth;
                 this.ratio += x / right;
-                 this.startX += x;
+                this.startX += x;
             }
         }
 
         up(event) {
             this.pressed = false;
+            console.log('up');
         }
 
         down(event) {
@@ -491,20 +493,24 @@ function initSeeMoreBlock() {
     let itemNum = 7;
     for (let i = 0; i < itemNum; i++) {
         let item = $(
-            `<div class="item vcenter fl inactive">
+            `<div class="item fl inactive">
                 <img class="goods" src="images/seckill/${Math.floor(Math.random() * 9)}.gif" />
-                <div class="new">NEW</div>
+                <div class="tag">
+                    <div class="new">NEW</div>
+                    <div class="desc">66核心无限战神笔记本</div>
+                    <div class="price">￥${(Math.random() * 2000).toFixed(2)}起</div>
+                </div>
             </div>`);
         sliderView.append(item);
     }
-    sliderView.find('.item:nth-child(2)').addClass('active').find('.new').show();
+    sliderView.find('.item:nth-child(2)').addClass('active').find('.tag').show();
     let sliderAnimate = () => {
         let centerItem = sliderView.find('.item:nth-child(3)');
         let items = sliderView.find('.item');
-        items.find('.new').hide();
+        items.find('.tag').hide();
         items.removeClass('active').addClass('inactive');
         centerItem.addClass('active');
-        centerItem.find('.new').show();
+        centerItem.find('.tag').show();
         sliderView.animate({ left: -itemWidth + 'px' }, 500, () => {
             let firstItem = sliderView.find('.item:first-child');
             let lastItem = sliderView.find('.item:last-child');
@@ -512,7 +518,10 @@ function initSeeMoreBlock() {
             sliderView.css('left', '0px');
         });
     }
-    setInterval(sliderAnimate, 3000);
+    setInterval(sliderAnimate, 4000);
+
+    let tabView = seeMore.find('.card:nth-child(2) .tab_view');
+    addTabViewEvent(tabView);
 }
 
 $(document).ready(() => {

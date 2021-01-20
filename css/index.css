@@ -448,8 +448,8 @@ nav .other .newspaper li a.more {
 }
 
 nav .other .newspaper li>a {
-    margin: 6px 10px 5px 10px;
     display: block;
+    margin: 6px 10px 5px 10px;
     white-space: nowrap;
     overflow: hidden;
     max-width: 180px;
@@ -480,7 +480,7 @@ nav .other .quick_life .quick_life_ul>li {
 }
 
 nav .other .quick_life li img {
-    width: 28x;
+    width: 28px;
     height: 28px;
     margin: 0px 16px;
     cursor: pointer;
@@ -1283,6 +1283,7 @@ nav .other .quick_life .tab_view .content.current {
 }
 
 .see_more .card {
+    position: relative;
     float: left;
     width: 347.5px;
     height: 350px;
@@ -1331,16 +1332,17 @@ nav .other .quick_life .tab_view .content.current {
     display: block;
     position: relative;
     width: 300%;
-    height: 200px;
+    height: 300px;
     margin-left: -40px;
     overflow: hidden;
-    background-color: skyblue;
 }
 
 .see_more .card .slider_view .item.inactive {
     position: relative;
     width: 120px;
     height: 120px;
+    top: 34%;
+    transform: translateY(-50%);
     transition: width 500ms linear, height 500ms linear;
 }
 
@@ -1356,8 +1358,14 @@ nav .other .quick_life .tab_view .content.current {
     max-height: 100%;
 }
 
-.see_more .card .slider_view .item .new {
+.see_more .card .slider_view .item .tag {
     display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.see_more .card .slider_view .item .tag .new {
     position: absolute;
     width: 60px;
     height: 26px;
@@ -1368,4 +1376,62 @@ nav .other .quick_life .tab_view .content.current {
     color: white;
     border-radius: 13px;
     background-color: tomato;
+}
+
+.see_more .card:nth-child(1) .item .tag .desc {
+    margin-top: 105%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.see_more .card:nth-child(1) .item .tag .price {
+    margin-top: 8px;
+    color: red;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.see_more .card:nth-child(1) button.flip_button {
+    opacity: 0.5;
+}
+
+.see_more .card .tab_view {
+    margin-top: 10px;
+}
+
+.see_more .card .tab_view .tab div {
+    margin-left: 15px;
+    padding: 0px 18px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    color: gray;
+    background-color: #eee;
+}
+
+.see_more .card .tab_view .tab div.current {
+    color: white;
+    background-color: red;
+}
+
+.see_more .card .tab_view .content {
+    display: none;
+    width: 100%;
+    height: 360px;
+}
+
+.see_more .card .tab_view .content.current {
+    display: block;
+}
+
+.see_more .card .tab_view .content .ranking_list {
+
+}
+
+.see_more .card .tab_view .content .ranking_list>li {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    margin-top: 15px;
+    background-color: springgreen;
 }
