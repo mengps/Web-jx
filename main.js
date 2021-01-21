@@ -522,6 +522,36 @@ function initSeeMoreBlock() {
 
     let tabView = seeMore.find('.card:nth-child(2) .tab_view');
     addTabViewEvent(tabView);
+    let contents = tabView.children('.content');
+    contents.each(function() {
+        $(this).append(
+            `<ul class="ranking_list">
+                <li>
+                    <div class="top top1 vcenter">
+                        <span class="fl">TOP</span>
+                        <span class="fl">01</span>
+                    </div>
+                    <img class="vcenter" src="./images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                    <span class="desc">Apple iPhone ${Math.floor(Math.random() * 99)}</span>
+                </li>
+                <li>
+                    <div class="top top2 vcenter">
+                        <span class="fl">TOP</span>
+                        <span class="fl">02</span>
+                    </div>
+                    <img class="vcenter" src="./images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                    <span class="desc">Apple iPhone ${Math.floor(Math.random() * 99)}</span>
+                </li>
+                <li>
+                    <div class="top top3 vcenter">
+                        <span class="fl">TOP</span>
+                        <span class="fl">03</span>
+                    </div>
+                    <img class="vcenter" src="./images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                    <span class="desc">Apple iPhone ${Math.floor(Math.random() * 99)}</span>
+                </li>
+            </ul>`);
+    });
 }
 
 $(document).ready(() => {
