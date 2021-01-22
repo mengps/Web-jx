@@ -915,6 +915,7 @@ nav .other .quick_life .tab_view .content.current {
     border-radius: 9px;
     color: red;
     background-color: transparent;
+    transition: background-color 300ms linear, color 300ms linear;
 }
 
 .feature .container .tab_view {
@@ -1275,8 +1276,7 @@ nav .other .quick_life .tab_view .content.current {
 /**
  * 看看更多区域
  */
-
- .see_more {
+.see_more {
     position: relative;
     width: 100%;
     margin-top: 20px;
@@ -1326,8 +1326,12 @@ nav .other .quick_life .tab_view .content.current {
     border-radius: 9px;
     color: red;
     background-color: transparent;
+    transition: background-color 300ms linear, color 300ms linear;
 }
 
+/**
+ * 新品首发区域
+ */
 .see_more .card .slider_view {
     display: block;
     position: relative;
@@ -1395,6 +1399,9 @@ nav .other .quick_life .tab_view .content.current {
     opacity: 0.5;
 }
 
+/**
+ * 排行榜区域
+ */
 .see_more .card .tab_view {
     margin-top: 10px;
 }
@@ -1427,9 +1434,9 @@ nav .other .quick_life .tab_view .content.current {
 .see_more .card .tab_view .content .ranking_list>li {
     position: relative;
     width: 100%;
-    height: 70px;
-    line-height: 70px;
-    margin-top: 15px;
+    height: 75px;
+    line-height: 75px;
+    margin-top: 10px;
     font-size: 0.9rem;
     color: #444;
     background-color: #00ff0011;
@@ -1484,6 +1491,10 @@ nav .other .quick_life .tab_view .content.current {
     margin-left: 30px;
 }
 
+
+/**
+ * 逛好店区域
+ */
 .see_more .card .shop {
     display: block;
     position: relative;
@@ -1547,6 +1558,9 @@ nav .other .quick_life .tab_view .content.current {
     background-color: #fafafa;
 }
 
+/**
+ * 领券中心区域
+ */
 .see_more .card .ticket {
     display: block;
     width: 90%;
@@ -1556,4 +1570,85 @@ nav .other .quick_life .tab_view .content.current {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.see_more .card .ticket .coupon {
+    width: 80%;
+    height: 90px;
+    margin: 0px 10%;
+}
+
+.see_more .card .ticket .coupon:first-child {
+    margin-top: -4px;
+}
+
+.see_more .card .ticket .coupon .goods_border {
+    width: 80px;
+    height: 80px;
+    margin-top: 3px;
+    border-radius: 40px;
+    background-color: white;
+}
+
+.see_more .card .ticket .coupon .goods_border .goods {
+    width: 90%;
+    height: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.see_more .card .ticket .coupon .desc {
+    display: inline-block;
+    width: 130px;
+    height: 90px;
+}
+
+.see_more .card .ticket .coupon .desc .price {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.see_more .card .ticket .coupon .desc .sign {
+    color: red;
+}
+
+.see_more .card .ticket .coupon .desc .num {
+    margin-left: -4px;
+    color: red;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.see_more .card .ticket .coupon .desc p.use {
+    margin-top: -6px;
+    margin-left: 5px;
+    color: #aaa;
+}
+
+.see_more .card .ticket .coupon .desc p.use_desc {
+    margin-left: 5px;
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.see_more .card .ticket .coupon .more_coupon {
+    position: relative;
+    width: 30px;
+    height: 100%;
+    margin-left: 10px;
+}
+
+.see_more .card .ticket .coupon .more_coupon .inner {
+    position: absolute;
+    width: 1px;
+    line-height: 15px;
+}
+
+.see_more .card .ticket .coupon .more_coupon .arrow {
+    position: absolute;
+    width: 15px;
+    margin-left: 18px;
 }
