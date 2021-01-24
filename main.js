@@ -277,12 +277,12 @@ function initSeckillBlock() {
             $(this).attr('src', imageUrls[index % 2]);
         });
         let width = seckill.find('.carousel')[0].offsetWidth || 240;
-        let offset = -width + 'px';
+        let offset = -width;
         let index = seckill.find('.carousel ul.index');
         let left = index.children('.left');
         let right = index.children('.right');
         setInterval(() => {
-            seckillCarouselList.animate({ left: offset }, 800, 'linear', () => {
+            seckillCarouselList.animate({ left: offset + 'px' }, 800, 'linear', () => {
                 if ((offset -= width) === -width * 3){
                     seckillCarouselList.css('left', '0px');
                     offset = -width;
@@ -554,6 +554,36 @@ function initSeeMoreBlock() {
     });
 }
 
+function initChannelPlaza() {
+    let channelPlaze = $('.channel_plaza');
+    let content = channelPlaze.find('.content');
+    content.append(
+        `<a class="card_big fl">
+            <div class="card_title">生鲜馆</div>
+            <div class="card_desc">爆款限时低价</div>
+            <img class="hcenter" src="images/seckill/0.gif"/>
+        </a>
+        <a class="card_big fl">
+            <div class="card_title">女装馆</div>
+            <div class="card_desc">签到领好礼</div>
+            <img class="hcenter" src="images/seckill/2.gif"/>
+        </a>`);
+    let title1 = ["京西健康"];
+    let title2 = ["健康才是真的好"];
+    for (let i = 0; i < 16; i++) {
+        let small = $(
+            `<a class="card_small fl">
+                <div class="card_small_title">
+                    <span>${title1[0]}</span>
+                    <span>${title2[0]}</span>
+                </div>
+                <img src="./images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+                <img src="./images/seckill/${Math.floor(Math.random() * 9)}.gif" />
+            </a>`);
+        content.append(small);
+    }
+}
+
 $(document).ready(() => {
     initShortcutBlock();
     initHeaderBlock();
@@ -562,4 +592,5 @@ $(document).ready(() => {
     initFeatureBlock();
     initNiceGoodsBlock();
     initSeeMoreBlock();
+    initChannelPlaza();
 });

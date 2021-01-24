@@ -1652,3 +1652,96 @@ nav .other .quick_life .tab_view .content.current {
     width: 15px;
     margin-left: 18px;
 }
+
+/**
+ * 频道广场部分
+ */
+ .channel_plaza .w {
+     width: 1430px;
+ }
+
+.channel_plaza .title {
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    background-image: url(../images/channel_plaza/title_background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.channel_plaza .content .card_big {
+    position: relative;
+    width: 347.5px;
+    height: 370px;
+    margin-right: 10px;
+    color: #726BB2;
+    background-color: #E1DEF1;
+}
+
+.channel_plaza .content .card_big:first-child {
+    color: #256b56;;
+    background-color: #a4ddcc;
+}
+
+.channel_plaza .content .card_big:first-child:hover {
+    background-color: #a3e4d0;
+}
+
+.channel_plaza .content .card_big .card_title {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.channel_plaza .content .card_big .card_desc {
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.channel_plaza .content .card_big img {
+    position: relative;
+    max-width: 100%;
+    max-height: 60%;
+    margin-top: 30px;
+}
+
+.channel_plaza .content .card_small {
+    position: relative;
+    width: 347.5px;
+    height: 180px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: #726BB2;
+    background-color: white;
+}
+
+.channel_plaza .content .card_small .card_small_title {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.channel_plaza .content .card_small .card_small_title>span:first-child {
+    color: black;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.channel_plaza .content .card_small .card_small_title>span:last-child {
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.channel_plaza .content .card_small img {
+    max-width: 50%;
+    max-height: 60%;
+    margin-top: 10px;
+    margin-left: 40px;
+}
